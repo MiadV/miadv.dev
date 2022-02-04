@@ -8,7 +8,7 @@ export const Card: React.FC<{ className?: string }> = ({
   return (
     <div
       className={clsx(
-        'bg-white rounded-2xl border border-gray-200 shadow-lg p-6',
+        'bg-white rounded-2xl border border-gray-200 shadow-xl p-6',
         className
       )}
     >
