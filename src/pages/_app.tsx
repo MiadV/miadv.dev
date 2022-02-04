@@ -1,8 +1,7 @@
-import '@/css/fonts.css';
-import '@/css/main.css';
+import '@/assets/css/fonts.css';
+import '@/assets/css/main.css';
 import { Fragment } from 'react';
 import type { AppProps } from 'next/app';
-import { Navbar } from '@/components/Navbar';
 import { LayoutProps } from '@/types';
 import { TitleMeta } from '@/components/TitleMeta';
 
@@ -20,8 +19,7 @@ function MyApp({
 
   return (
     <>
-      <TitleMeta suffix="Miad Vosoughi">{meta?.title}</TitleMeta>
-      <Navbar />
+      <TitleMeta suffix='Miad Vosoughi'>{meta?.title}</TitleMeta>
       <Layout {...layoutPropsObj}>
         <Component {...pageProps} />
       </Layout>
