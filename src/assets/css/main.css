@@ -7,3 +7,24 @@
     color-scheme: dark;
   }
 }
+
+/* styling Swiper custom pagination elements */
+.swiper-pagination-item {
+  display: inline-block;
+  height: 8px;
+  width: 10px;
+  border-radius: 20px;
+  background-color: theme("colors.indigo.200");
+  margin-right: 4px;
+  margin-left: 4px;
+}
+.swiper-pagination-item-active {
+  width: 20px;
+  background-color: theme("colors.indigo.700");
+}
+
+html.dark .swiper-button-next {
+  background-color: theme("colors.slate.600");
+}
+
+/* end of styling Swiper custom pagination elements */

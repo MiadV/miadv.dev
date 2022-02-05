@@ -74,9 +74,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "border-indigo-600",
     ];
     let btnGhost = [
-      "bg-transparent",
-      "dark:text-white",
-      "hover:bg-indigo-50",
+      "bg-indigo-50",
+      "text-indigo-700",
+      "hover:bg-indigo-100",
       "hover:text-indigo-700",
       "hover:dark:text-indigo-700",
     ];

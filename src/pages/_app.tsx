@@ -1,4 +1,8 @@
 import "@/assets/css/fonts.css";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+//
 import "@/assets/css/main.css";
 import { Fragment } from "react";
 import type { AppProps } from "next/app";
