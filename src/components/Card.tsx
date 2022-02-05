@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import React from 'react';
+import React from "react";
+import clsx from "clsx";
 
 export const Card: React.FC<{ className?: string }> = ({
   children,
@@ -8,7 +8,7 @@ export const Card: React.FC<{ className?: string }> = ({
   return (
     <div
       className={clsx(
-        'bg-white rounded-2xl border border-gray-200 shadow-xl p-6',
+        "rounded-2xl border border-gray-200 bg-white p-6 shadow-xl",
         className
       )}
     >

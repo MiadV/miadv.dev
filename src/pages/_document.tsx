@@ -4,7 +4,7 @@ import NextDocument, {
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document';
+} from "next/document";
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
@@ -30,7 +30,7 @@ export default class Document extends NextDocument {
             }}
           />
         </Head>
-        <body className="antialiased bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-400 dark:highlight-white/5">
+        <body className="dark:highlight-white/5 relative bg-gray-50 text-gray-700 antialiased dark:bg-gray-800 dark:text-gray-400">
           <Main />
           <NextScript />
         </body>

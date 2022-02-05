@@ -1,10 +1,10 @@
-import React from 'react';
-import Head from 'next/head';
+import React from "react";
+import Head from "next/head";
 
 type MetaTitleProps = { suffix?: string };
 
 export const TitleMeta: React.FC<MetaTitleProps> = ({ suffix, children }) => {
-  let title = children + (suffix ? ` - ${suffix}` : '');
+  let title = children + (suffix ? ` - ${suffix}` : "");
 
   return (
     <Head>
