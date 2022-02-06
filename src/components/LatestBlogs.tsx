@@ -6,6 +6,7 @@ import { Card } from "./Card";
 import { Button } from "./Button";
 import ChevronRightIcon from "@/assets/Icons/ChevronRightIcon";
 import FeatherIcon from "@/assets/Icons/FeatherIcon";
+import { widontString } from "@/utils/widontString";
 
 const latesBlogs = [
   {
@@ -34,7 +35,7 @@ const latesBlogs = [
 export const LatestBlogs = () => {
   return (
     <section id="latest-blogs" className="relative py-16">
-      <h2 className="relative text-center text-3xl font-semibold text-gray-900 dark:text-gray-100">
+      <h2 className="relative text-center text-3xl font-semibold text-gray-900 dark:text-gray-50">
         Latest Blogs
       </h2>
       <span className="mx-auto mt-2 mb-8 block h-1.5 w-[80px] rounded-full bg-indigo-600" />
@@ -73,15 +74,19 @@ function BlogSliderItem() {
       <article>
         <div className="flex items-center">
           <div>
-            <h3 className="text-lg font-semibold">
-              Blog Title sample text hire I am
-            </h3>
+            <Link href="/#">
+              <a>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
+                  {widontString(" Blog Title sample text hire I am")}
+                </h3>
+              </a>
+            </Link>
             <span className="text-xs font-medium text-gray-500">
               July 7, 2022 • 10 min read
             </span>
           </div>
           <span className="ml-auto basis-[70px]">
-            <FeatherIcon className="h-[70px] w-[70px] fill-gray-200" />
+            <FeatherIcon className="h-[70px] w-[70px] fill-gray-200 dark:fill-gray-600" />
           </span>
         </div>
         <p className="prose my-4">

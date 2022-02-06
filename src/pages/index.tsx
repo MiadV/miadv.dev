@@ -13,17 +13,17 @@ export default function Home() {
     <>
       <header>
         <Navbar />
-        <div className="bg-gray-100 py-16">
+        <div className="bg-gray-100 py-16 dark:bg-slate-700">
           <div className="mx-auto mt-16 max-w-screen-lg">
             <section
               id="hero"
               className="flex flex-col items-center justify-between px-6 sm:px-8 md:flex-row"
             >
               <h1>
-                <span className="mb-4 inline-block text-4xl font-bold text-gray-900 md:text-5xl">
+                <span className="mb-4 inline-block text-4xl font-bold text-gray-900 dark:text-gray-50 md:text-5xl">
                   Hi, I am <span className="text-indigo-600">Miad</span>
                 </span>
-                <span className="text-3xl font-semibold leading-tight text-gray-900 md:text-4xl">
+                <span className="text-3xl font-semibold leading-tight text-gray-900 dark:text-gray-50 md:text-4xl">
                   <br /> I help SMEs improve <br /> their business
                   <br /> using web technologies.
                 </span>
@@ -37,10 +37,10 @@ export default function Home() {
                   height={130}
                   className="block overflow-hidden rounded-full bg-gray-200"
                 />
-                <span className="mt-2 block text-lg font-semibold text-gray-900">
+                <span className="mt-2 block text-lg font-semibold text-gray-900 dark:text-gray-50">
                   Miad Vosoughi Nia
                 </span>
-                <span className="mt-2 block text-gray-700">
+                <span className="mt-2 block">
                   Self-taught Web Develoer | Front End Developer | React.js
                   Enthusiast
                 </span>

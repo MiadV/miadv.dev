@@ -95,10 +95,10 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
       <Listbox.Label className="sr-only">Change Theme</Listbox.Label>
       <Listbox.Button type="button">
         <span className="dark:hidden">
-          <SunIcon className="fill-gray-600 hover:fill-indigo-600" />
+          <SunIcon className="fill-gray-600 hover:fill-indigo-600 dark:fill-gray-400 dark:hover:fill-indigo-600" />
         </span>
         <span className="hidden dark:inline">
-          <MoonIcon className="fill-gray-600 hover:fill-indigo-600" />
+          <MoonIcon className="fill-gray-600 hover:fill-indigo-600 dark:fill-gray-400 dark:hover:fill-indigo-600" />
         </span>
       </Listbox.Button>
       <Listbox.Options
@@ -113,11 +113,11 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
               <li
                 className={clsx(
                   "flex cursor-pointer items-center py-1 px-2",
-                  selected && "text-indigo-500",
+                  selected && "text-indigo-600",
                   active && "bg-gray-50 dark:bg-gray-600/30"
                 )}
               >
-                <Icon className="mr-2 fill-gray-600 hover:fill-indigo-600" />
+                <Icon className="mr-2 fill-gray-600 hover:fill-indigo-600 dark:fill-gray-400 dark:hover:fill-indigo-600" />
                 {label}
               </li>
             )}

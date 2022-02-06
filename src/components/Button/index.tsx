@@ -65,9 +65,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "text-gray-600",
       "fill-gray-600",
       "dark:text-white",
-      "hover:text-indigo-700",
-      "hover:fill-indigo-700",
-      "hover:dark:text-indigo-700",
+      "hover:text-indigo-600",
+      "hover:fill-indigo-600",
+      "hover:dark:text-indigo-600",
       "bg-transparent",
       "hover:bg-indigo-50",
       "border",
@@ -75,10 +75,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ];
     let btnGhost = [
       "bg-indigo-50",
-      "text-indigo-700",
+      "text-indigo-600",
       "hover:bg-indigo-100",
-      "hover:text-indigo-700",
-      "hover:dark:text-indigo-700",
+      "hover:text-indigo-600",
+      "hover:dark:text-indigo-600",
     ];
 
     if (variant === "solid") {

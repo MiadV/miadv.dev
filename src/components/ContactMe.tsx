@@ -29,13 +29,13 @@ export const ContactMe = () => {
     <section id="contact-me" className="py-16">
       <Card className="relative z-0 text-center">
         <span className="absolute top-8 left-8 -z-10 hidden sm:block">
-          <PaperPlaneIcon className="h-[100px] w-[100px] fill-gray-200" />
+          <PaperPlaneIcon className="h-[100px] w-[100px] fill-gray-200 dark:fill-gray-600" />
         </span>
 
         <h2 className="text-lg font-semibold">Get in Touch</h2>
         <a
           href="mailto:miadv.biz@gmail.com"
-          className="text-2xl font-semibold text-indigo-700"
+          className="mt-2 inline-block text-2xl font-semibold text-indigo-700 dark:text-indigo-500"
         >
           miadv.biz@gmail.com
         </a>
@@ -48,6 +48,7 @@ export const ContactMe = () => {
                 isExternal
                 aria-label={link.lable}
                 href={link.href}
+                className="dark:fill-gray-400 dark:hover:fill-indigo-600"
               >
                 {link.Icon}
               </IconButton>

@@ -52,7 +52,9 @@ export const Navbar = () => {
       id="navbar"
       className={clsx(
         "fixed inset-x-0 top-0 z-40 h-16 transition-colors duration-300",
-        isStiky ? "border-b border-gray-200 bg-white" : "bg-transparent"
+        isStiky
+          ? "border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800"
+          : "bg-transparent"
       )}
     >
       <div className="mx-auto max-w-screen-2xl py-4 px-4 md:px-8">
@@ -89,7 +91,7 @@ export const Navbar = () => {
                 className="ml-6"
               >
                 <span className="sr-only">Miad Vosoughi on GitHub</span>
-                <GithubIcon className="fill-gray-600 hover:fill-indigo-600" />
+                <GithubIcon className="fill-gray-600 hover:fill-indigo-600 dark:fill-gray-400 dark:hover:fill-indigo-600" />
               </a>
             </div>
           </div>

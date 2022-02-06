@@ -20,6 +20,10 @@ import clsx from "clsx";
 // export default Logo;
 
 function Logo() {
-  return <span className="text-2xl font-semibold text-gray-900">MiadV</span>;
+  return (
+    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
+      MiadV
+    </span>
+  );
 }
 export default Logo;
