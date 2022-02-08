@@ -12,19 +12,19 @@ const navItems = [
   },
   {
     title: "About",
-    path: "/",
+    path: "/#about",
   },
   {
     title: "Projects",
-    path: "/",
+    path: "/#projects",
   },
   {
     title: "Blog",
-    path: "/",
+    path: "/#latest-blogs",
   },
   {
     title: "Contact",
-    path: "/",
+    path: "/#contact-me",
   },
 ];
 

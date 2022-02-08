@@ -14,7 +14,7 @@ export default class Document extends NextDocument {
 
   render() {
     return (
-      <Html lang="en" className="dark">
+      <Html lang="en" className="dark scroll-pt-[2rem] scroll-smooth">
         <Head>
           <script
             dangerouslySetInnerHTML={{

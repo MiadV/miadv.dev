@@ -28,7 +28,7 @@ const FloatingItems: React.FC<{
 
 export const AboutMe = () => {
   return (
-    <section id="about-me" className="py-16">
+    <section id="about" className="py-16">
       <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-16">
         <div className="mx-auto max-w-md text-center lg:mx-0 lg:max-w-sm lg:text-left">
           <h2 className="relative text-3xl font-semibold text-gray-900 dark:text-gray-50">
