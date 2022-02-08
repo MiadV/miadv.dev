@@ -9,11 +9,10 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.3",
-    "@mdx-js/loader": "^2.0.0",
-    "@next/mdx": "^12.0.10",
     "clsx": "^1.1.1",
     "gray-matter": "^4.0.3",
     "next": "12.0.10",
+    "next-mdx-remote": "^3.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "swiper": "^8.0.3"

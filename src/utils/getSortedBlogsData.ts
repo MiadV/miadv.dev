@@ -1,37 +1,34 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { BlogMetaType } from "@/types";
 
-const blogsDirectory = path.join(process.cwd(), "data/blogs");
+const blogsDirectory = path.join(process.cwd(), "src/data/blogs");
 
 export function getSortedBlogsData() {
-  // Get file names
   const fileNames = fs.readdirSync(blogsDirectory);
   const allBlogsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get slug
     const slug = fileName.replace(/\.mdx$/, "");
-
-    // Read md file as string
     const fullPath = path.join(blogsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const matterResult = matter.read(fullPath);
 
-    // Use gray-matter to parse the blog metadata section
-    const matterResult = matter(fileContents);
-
-    // Combine the data with the id
     return {
+      meta: { ...(matterResult.data as BlogMetaType) },
       slug,
-      ...matterResult.data,
+      content: matterResult.content,
     };
   });
+
   // Sort posts by date
-  return allBlogsData.sort(({ date: a }, { date: b }) => {
-    if (a < b) {
-      return 1;
-    } else if (a > b) {
-      return -1;
-    } else {
-      return 0;
+  return allBlogsData.sort(
+    ({ meta: { publishedAt: a } }, { meta: { publishedAt: b } }) => {
+      if (a < b) {
+        return 1;
+      } else if (a > b) {
+        return -1;
+      } else {
+        return 0;
+      }
     }
-  });
+  );
 }

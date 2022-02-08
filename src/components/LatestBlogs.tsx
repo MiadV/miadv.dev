@@ -89,7 +89,7 @@ function BlogSliderItem() {
             <FeatherIcon className="h-[70px] w-[70px] fill-gray-200 dark:fill-gray-600" />
           </span>
         </div>
-        <p className="prose my-4">
+        <p className="my-4">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet
           consectetur adipisicing elit.
         </p>

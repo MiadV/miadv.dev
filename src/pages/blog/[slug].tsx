@@ -1,34 +1,45 @@
-import { getSortedBlogsData } from "@/utils/getSortedBlogsData";
+import React from "react";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
 import BlogLayout from "@/layouts/BlogLayout";
+import { getSortedBlogsData } from "@/utils/getSortedBlogsData";
+import { BlogItemType } from "@/types";
 
-export async function getStaticProps() {
-  const allBlogsData = getSortedBlogsData();
+let blogs = getSortedBlogsData();
+
+export async function getStaticPaths() {
   return {
-    props: {
-      allBlogsData,
-    },
+    paths: blogs.map((p) => ({ params: { slug: p.slug } })),
+    fallback: false,
   };
 }
 
-export default function Blog({ allBlogsData }) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const blog = blogs.find((post) => post.slug === params.slug);
+
+  let mdxSource;
+  if (blog) {
+    mdxSource = await serialize(blog?.content, { scope: blog.meta });
+  } else {
+    return {
+      notFound: true,
+    };
+  }
+
+  return { props: { blog, mdxSource } };
+}
+
+export default function Blog({
+  blog,
+  mdxSource,
+}: {
+  blog: BlogItemType;
+  mdxSource: any;
+}) {
   return (
     <BlogLayout>
-      {/* Keep the existing code here */}
-
-      {/* Add this <section> tag below the existing <section> tag */}
-
-      <h2>Blog</h2>
-      <ul>
-        {allBlogsData.map(({ slug, publishedAt, title }) => (
-          <li key={slug}>
-            {title}
-            <br />
-            {slug}
-            <br />
-            {publishedAt}
-          </li>
-        ))}
-      </ul>
+      <h2>{blog.slug}</h2>
+      <MDXRemote {...mdxSource} />
     </BlogLayout>
   );
 }
