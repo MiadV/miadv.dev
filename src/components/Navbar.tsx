@@ -72,11 +72,11 @@ export const Navbar = () => {
                 {navItems.map((item) => (
                   <li className="relative" key={item.title}>
                     <Link href={item.path}>
-                      <a className="peer transition-all duration-150 hover:text-indigo-600">
+                      <a className="peer transition-all duration-150 hover:text-indigo-500">
                         {item.title}
                       </a>
                     </Link>
-                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-600 transition-all duration-150 peer-hover:scale-x-100" />
+                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-500 transition-all duration-150 peer-hover:scale-x-100" />
                   </li>
                 ))}
               </ul>

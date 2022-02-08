@@ -7,13 +7,19 @@ import { Projects } from "@/components/Projects";
 import { ContactMe } from "@/components/ContactMe";
 import { Footer } from "@/components/Footer";
 import { LatestBlogs } from "@/components/LatestBlogs";
+import useTypingText from "../hooks/useTypingText";
 
 export default function Home() {
+  const { typingText } = useTypingText(
+    "Self-taught Web Developer | Front End Developer | React.js Enthusiast",
+    100,
+    1000
+  );
   return (
     <>
       <header>
         <Navbar />
-        <div className="bg-gray-100 py-16 dark:bg-slate-700">
+        <div className="bg-gray-100 py-16 dark:bg-gray-800">
           <div className="mx-auto mt-16 max-w-screen-lg">
             <section
               id="hero"
@@ -29,20 +35,21 @@ export default function Home() {
                 </span>
               </h1>
 
-              <Card className="mt-8 max-w-[400px] text-center md:mt-0 md:max-w-[350px] lg:max-w-[400px]">
+              <Card className="mt-8 h-[260px] w-[330px] text-center md:mt-0 md:w-[350px] lg:w-[400px]">
                 <Image
                   src="/me.png"
                   alt="Miad Vosoughi - MiadV"
-                  width={130}
-                  height={130}
+                  width={110}
+                  height={110}
                   className="block overflow-hidden rounded-full bg-gray-200"
                 />
                 <span className="mt-2 block text-lg font-semibold text-gray-900 dark:text-gray-50">
                   Miad Vosoughi Nia
                 </span>
                 <span className="mt-2 block">
-                  Self-taught Web Develoer | Front End Developer | React.js
-                  Enthusiast
+                  {/* Self-taught Web Developer | Front End Developer | React.js
+                  Enthusiast */}
+                  {typingText}
                 </span>
               </Card>
             </section>

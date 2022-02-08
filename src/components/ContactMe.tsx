@@ -35,7 +35,7 @@ export const ContactMe = () => {
         <h2 className="text-lg font-semibold">Get in Touch</h2>
         <a
           href="mailto:miadv.biz@gmail.com"
-          className="mt-2 inline-block text-2xl font-semibold text-indigo-700 dark:text-indigo-500"
+          className="mt-2 inline-block text-2xl font-semibold text-indigo-600"
         >
           miadv.biz@gmail.com
         </a>
