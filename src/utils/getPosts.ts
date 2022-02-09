@@ -1,10 +1,11 @@
 import { bundleMDX } from "mdx-bundler";
-import rehypePrismPlus from "rehype-prism-plus";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import rehypePrismPlus from "rehype-prism-plus";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { rehypeCodeMetaAttribute } from "./rehypeCodeMetaAttribute";
 import { h } from "hastscript";
 import type { PostFrontMatterType, PostType } from "@/types";
 
@@ -45,6 +46,7 @@ export async function getPostBySlug(postType: PostType, slug: string) {
       options.remarkPlugins = [...(options.remarkPlugins ?? [])];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
+        rehypeCodeMetaAttribute,
         rehypeSlug,
         [
           rehypeAutolinkHeadings,

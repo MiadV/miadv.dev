@@ -1,9 +1,8 @@
 import React from "react";
-import BlogLayout from "@/layouts/BlogLayout";
-import Link from "next/link";
-import { Button } from "@/components/Button";
 import { getMDXComponent } from "mdx-bundler/client";
 import { getAllPostsFrontmatter, getPostBySlug } from "@/utils/getPosts";
+import BlogLayout from "@/layouts/BlogLayout";
+import Pre from "@/components/Pre";
 import type { PostFrontMatterType } from "@/types";
 
 export async function getStaticPaths() {
@@ -40,7 +39,11 @@ export default function Blog({
   return (
     <BlogLayout>
       <h2>{frontmatter.title}</h2>
-      <Component />
+      <Component
+        components={{
+          pre: (props) => <Pre {...props} />,
+        }}
+      />
     </BlogLayout>
   );
 }

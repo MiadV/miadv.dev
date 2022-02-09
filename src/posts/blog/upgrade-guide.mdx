@@ -28,7 +28,7 @@ To learn more about what's new in Tailwind CSS v3.0, read the [Tailwind CSS v3.0
 
 Update Tailwind, as well as PostCSS and autoprefixer, using npm:
 
-```shell
+```shell filename=test.sh
 npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 ```
 
@@ -41,7 +41,7 @@ All of our first-party plugins have been updated for compatibility with v3.0.
 If you're using any of our plugins, make sure to update them all to the latest version at the same time to avoid version constraint errors.
 
 ```html
-npm install -D tailwindcss@latest \ **@tailwindcss/typography@latest** \
+npm install -D tailwindcss@latest **@tailwindcss/typography@latest**
 **@tailwindcss/forms@latest** \ **@tailwindcss/aspect-ratio@latest** \
 **@tailwindcss/line-clamp@latest** \ postcss@latest \ autoprefixer@latest
 ```
@@ -52,14 +52,14 @@ For Tailwind CSS v3.0, the CSS-based CDN build we've offered in the past has bee
 
 To try it out, throw this `<script>` tag in your `<head>`:
 
-```html {1,2} showLineNumbers
+```html {1-5} showLineNumbers filename=index.html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Example</title>
     +
+    <title>Example</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
@@ -123,7 +123,7 @@ The dark mode feature is now enabled using the `media` strategy by default, so y
 
 You can also safely remove this key if it's currently set to `false`:
 
-```js tailwind.config.js
+```js filename=tailwind.config.js
   module.exports = {
 -   darkMode: false,
     // ...
@@ -134,7 +134,7 @@ You can also safely remove this key if it's currently set to `false`:
 
 In Tailwind CSS v3.0, every variant is automatically available for every utility by default, so you can remove the `variants` section from your `tailwind.config.js` file:
 
-```js tailwind.config.js
+```js filename=tailwind.config.js
   module.exports = {
     // ...
 -   variants: {
