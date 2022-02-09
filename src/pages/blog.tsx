@@ -1,31 +1,23 @@
-import { getSortedBlogsData } from "@/utils/getSortedBlogsData";
-import BlogLayout from "@/layouts/BlogLayout";
-import { BlogItemType } from "@/types";
+import React from "react";
 import Link from "next/link";
-
-export async function getStaticProps() {
-  const allBlogsData = getSortedBlogsData();
-  return {
-    props: {
-      allBlogsData,
-    },
-  };
-}
+import { getAllPostsFrontmatter } from "@/utils/getPosts";
+import BlogLayout from "@/layouts/BlogLayout";
+import { PostFrontMatterType } from "@/types";
 
 export default function Blog({
   allBlogsData,
 }: {
-  allBlogsData: BlogItemType[];
+  allBlogsData: PostFrontMatterType[];
 }) {
   return (
     <BlogLayout>
       <h2>Blog</h2>
       <ul>
-        {allBlogsData.map(({ slug, meta: { title, publishedAt } }) => (
+        {allBlogsData.map(({ slug, title, publishedAt }) => (
           <li key={slug}>
             {title}
             <br />
-            <Link href={`blog/${slug}`}>
+            <Link href={`/blog/${slug}`}>
               <a>{slug}</a>
             </Link>
             <br />
@@ -35,4 +27,13 @@ export default function Blog({
       </ul>
     </BlogLayout>
   );
+}
+
+export async function getStaticProps() {
+  const allBlogsData = await getAllPostsFrontmatter("blog");
+  return {
+    props: {
+      allBlogsData,
+    },
+  };
 }

@@ -1,13 +1,13 @@
 import React from "react";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
 import BlogLayout from "@/layouts/BlogLayout";
-import { getSortedBlogsData } from "@/utils/getSortedBlogsData";
-import { BlogItemType } from "@/types";
-
-let blogs = getSortedBlogsData();
+import Link from "next/link";
+import { Button } from "@/components/Button";
+import { getMDXComponent } from "mdx-bundler/client";
+import { getAllPostsFrontmatter, getPostBySlug } from "@/utils/getPosts";
+import type { PostFrontMatterType } from "@/types";
 
 export async function getStaticPaths() {
+  let blogs = await getAllPostsFrontmatter("blog");
   return {
     paths: blogs.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
@@ -15,31 +15,32 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const blog = blogs.find((post) => post.slug === params.slug);
+  const { mdxSource, frontmatter } = await getPostBySlug("blog", params.slug);
 
-  let mdxSource;
-  if (blog) {
-    mdxSource = await serialize(blog?.content, { scope: blog.meta });
+  if (mdxSource) {
+    return { props: { mdxSource, frontmatter } };
   } else {
     return {
       notFound: true,
     };
   }
-
-  return { props: { blog, mdxSource } };
 }
 
 export default function Blog({
-  blog,
   mdxSource,
+  frontmatter,
 }: {
-  blog: BlogItemType;
-  mdxSource: any;
+  mdxSource: string;
+  frontmatter: PostFrontMatterType;
 }) {
+  const Component = React.useMemo(
+    () => getMDXComponent(mdxSource),
+    [mdxSource]
+  );
   return (
     <BlogLayout>
-      <h2>{blog.slug}</h2>
-      <MDXRemote {...mdxSource} />
+      <h2>{frontmatter.title}</h2>
+      <Component />
     </BlogLayout>
   );
 }

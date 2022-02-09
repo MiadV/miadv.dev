@@ -1,4 +1,10 @@
 @tailwind base;
+
+/*! purgecss start ignore */
+@import "prism.css";
+@import "rehype-prism-plus.css";
+/*! purgecss end ignore */
+
 @tailwind components;
 @tailwind utilities;
 
