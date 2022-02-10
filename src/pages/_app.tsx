@@ -8,6 +8,8 @@ import { Fragment } from "react";
 import type { AppProps } from "next/app";
 import { LayoutProps } from "@/types";
 import { TitleMeta } from "@/components/TitleMeta";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 function MyApp({
   Component,
@@ -24,9 +26,15 @@ function MyApp({
   return (
     <>
       <TitleMeta suffix="Miad Vosoughi">{meta?.title}</TitleMeta>
-      <Layout {...layoutPropsObj}>
-        <Component {...pageProps} />
-      </Layout>
+      <header>
+        <Navbar />
+      </header>
+      <div className="flex h-screen flex-col justify-between">
+        <Layout {...layoutPropsObj}>
+          <Component {...pageProps} />
+        </Layout>
+        <Footer />
+      </div>
     </>
   );
 }
