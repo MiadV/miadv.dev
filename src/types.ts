@@ -1,3 +1,5 @@
+import { ReadTimeResults } from "reading-time";
+
 export type LayoutProps = {
   meta?: {
     title: string;
@@ -16,4 +18,5 @@ export type PostFrontMatterType = {
   image?: string;
   tags?: string[];
   slug?: string;
+  readTime: ReadTimeResults;
 };

@@ -1,5 +1,5 @@
-import { Navbar } from "@/components/Navbar";
 import React from "react";
+import { Navbar } from "@/components/Navbar";
 
 const BlogLayout: React.FC = ({ children }) => {
   return (
@@ -7,8 +7,10 @@ const BlogLayout: React.FC = ({ children }) => {
       <header>
         <Navbar />
       </header>
-      <div className="prose prose-slate mx-auto mt-10 px-4 pb-28 dark:prose-invert sm:mt-16 sm:px-6 md:prose-lg md:px-8 xl:px-12">
-        {children}
+      <div className="mt-24 px-4 sm:px-6 md:px-8 xl:px-12">
+        <article className="prose prose-slate mx-auto prose-a:font-semibold prose-a:text-indigo-600 dark:prose-invert prose-a:dark:text-indigo-400">
+          {children}
+        </article>
       </div>
     </>
   );

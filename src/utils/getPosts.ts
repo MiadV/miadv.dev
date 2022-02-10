@@ -1,7 +1,9 @@
 import { bundleMDX } from "mdx-bundler";
 import fs from "fs";
+import readingTime from "reading-time";
 import matter from "gray-matter";
 import path from "path";
+import remarkGfm from "remark-gfm";
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -43,7 +45,7 @@ export async function getPostBySlug(postType: PostType, slug: string) {
       // this is the recommended way to add custom remark/rehype plugins:
       // The syntax might look weird, but it protects you in case we add/remove
       // plugins in the future.
-      options.remarkPlugins = [...(options.remarkPlugins ?? [])];
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeCodeMetaAttribute,
@@ -51,12 +53,8 @@ export async function getPostBySlug(postType: PostType, slug: string) {
         [
           rehypeAutolinkHeadings,
           {
-            behavior: "append",
             properties: {
-              class: "",
-            },
-            content() {
-              return [h("span.icon.icon-link", { ariaHidden: "true" })];
+              className: "anchor",
             },
           },
         ],
@@ -66,9 +64,10 @@ export async function getPostBySlug(postType: PostType, slug: string) {
     },
   });
 
+  const readTime = readingTime(code);
   return {
     mdxSource: code,
-    frontmatter,
+    frontmatter: { ...frontmatter, readTime },
   };
 }
 
@@ -87,14 +86,16 @@ export async function getAllPostsFrontmatter(
     }
 
     const fullPath = path.join(pathPrefix, file);
-    const { data: frontmatter } = matter.read(fullPath);
+    const { data: frontmatter, content } = matter.read(fullPath);
 
+    const readTime = readingTime(content);
     const fileName = file.replace(/\.mdx$/, "");
 
     if (frontmatter.draft !== true) {
       allFrontMatter.push({
         ...frontmatter,
         slug: fileName,
+        readTime: readTime,
       });
     }
   });

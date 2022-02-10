@@ -1,9 +1,10 @@
 import React from "react";
+import Logo from "@/assets/Logo";
 import EmailIcon from "@/assets/Icons/EmailIcon";
 import InstagramIcon from "@/assets/Icons/InstagramIcon";
 import GithubIcon from "@/assets/Icons/GithubIcon";
 import LinkedinIcon from "@/assets/Icons/LinkedinIcon";
-import Logo from "@/assets/Logo";
+import YoutubeIcon from "@/assets/Icons/YoutubeIcon";
 
 const socialLinks = [
   {
@@ -26,6 +27,11 @@ const socialLinks = [
     Icon: <InstagramIcon />,
     href: "https://www.instagram.com/miadv.dev/",
   },
+  {
+    lable: "youtube",
+    Icon: <YoutubeIcon />,
+    href: "https://www.youtube.com/c/MiadVosoughi/",
+  },
 ];
 
 export const Footer = () => {
@@ -42,7 +48,7 @@ export const Footer = () => {
                 href={link.href}
                 rel="noopener noreferrer"
                 target="_blank"
-                className="fill-gray-600 hover:fill-indigo-600 dark:fill-gray-400 dark:hover:fill-indigo-600"
+                className="fill-gray-600 hover:fill-indigo-600 dark:fill-gray-400 dark:hover:fill-indigo-400"
               >
                 <span className="sr-only">{link.lable}</span>
                 {link.Icon}

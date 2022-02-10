@@ -13,7 +13,7 @@ export default function Blog({
     <BlogLayout>
       <h2>Blog</h2>
       <ul>
-        {allBlogsData.map(({ slug, title, publishedAt }) => (
+        {allBlogsData.map(({ slug, title, publishedAt, readTime }) => (
           <li key={slug}>
             {title}
             <br />
@@ -21,7 +21,8 @@ export default function Blog({
               <a>{slug}</a>
             </Link>
             <br />
-            {publishedAt}
+            {publishedAt} {` • `}
+            {readTime.text}
           </li>
         ))}
       </ul>

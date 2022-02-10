@@ -1,19 +1,82 @@
 import React from "react";
-import clsx from "clsx";
+import { motion } from "framer-motion";
 
-function SunIcon(props: React.SVGProps<SVGSVGElement>) {
-  const { height = 24, width = 24, className, ...otherProps } = props;
+export const transition = {
+  type: "spring",
+  stiffness: 200,
+  damping: 10,
+};
+
+export const whileTap = {
+  scale: 0.95,
+  rotate: 15,
+};
+
+export const SunIcon = () => {
+  const raysVariants = {
+    initial: { rotate: 45 },
+    animate: { rotate: 0, transition },
+  };
+
+  const coreVariants = {
+    initial: { scale: 1.5 },
+    animate: { scale: 1, transition },
+  };
 
   return (
-    <svg
+    <motion.svg
+      key="sun"
+      width="1em"
+      height="1em"
       viewBox="0 0 24 24"
-      height={height}
-      width={width}
-      className={clsx("fill-inherit", className)}
-      {...otherProps}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      whileTap={whileTap}
+      // Centers the rotation anchor point vertically & horizontally
+      style={{ originX: "50%", originY: "50%" }}
+      className="h-6 w-6"
     >
-      <path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
-    </svg>
+      <motion.circle
+        cx="11.9998"
+        cy="11.9998"
+        r="5.75375"
+        fill="currentColor"
+        initial="initial"
+        animate="animate"
+        variants={coreVariants}
+      />
+      <motion.g initial="initial" animate="animate" variants={raysVariants}>
+        <circle
+          cx="3.08982"
+          cy="6.85502"
+          r="1.71143"
+          transform="rotate(-60 3.08982 6.85502)"
+          fill="currentColor"
+        />
+        <circle
+          cx="3.0903"
+          cy="17.1436"
+          r="1.71143"
+          transform="rotate(-120 3.0903 17.1436)"
+          fill="currentColor"
+        />
+        <circle cx="12" cy="22.2881" r="1.71143" fill="currentColor" />
+        <circle
+          cx="20.9101"
+          cy="17.1436"
+          r="1.71143"
+          transform="rotate(-60 20.9101 17.1436)"
+          fill="currentColor"
+        />
+        <circle
+          cx="20.9101"
+          cy="6.8555"
+          r="1.71143"
+          transform="rotate(-120 20.9101 6.8555)"
+          fill="currentColor"
+        />
+        <circle cx="12" cy="1.71143" r="1.71143" fill="currentColor" />
+      </motion.g>
+    </motion.svg>
   );
-}
-export default SunIcon;
+};

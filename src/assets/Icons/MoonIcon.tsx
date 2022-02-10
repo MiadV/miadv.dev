@@ -1,20 +1,41 @@
 import React from "react";
-import clsx from "clsx";
+import { motion } from "framer-motion";
 
-function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
-  const { height = 24, width = 24, className, ...otherProps } = props;
+export const transition = {
+  type: "spring",
+  stiffness: 200,
+  damping: 10,
+};
+
+export const whileTap = {
+  scale: 0.95,
+  rotate: 15,
+};
+
+export const MoonIcon = () => {
+  const variants = {
+    initial: { scale: 0.6, rotate: 90 },
+    animate: { scale: 1, rotate: 0, transition },
+    whileTap,
+  };
 
   return (
-    <svg
-      viewBox="0 0 24 24"
-      height={height}
-      width={width}
-      className={clsx("fill-inherit", className)}
-      {...otherProps}
+    <motion.svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 50 50"
+      key="moon"
+      className="h-6 w-6"
     >
-      <path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z"></path>
-    </svg>
+      <motion.path
+        d="M 43.81 29.354 C 43.688 28.958 43.413 28.626 43.046 28.432 C 42.679 28.238 42.251 28.198 41.854 28.321 C 36.161 29.886 30.067 28.272 25.894 24.096 C 21.722 19.92 20.113 13.824 21.683 8.133 C 21.848 7.582 21.697 6.985 21.29 6.578 C 20.884 6.172 20.287 6.022 19.736 6.187 C 10.659 8.728 4.691 17.389 5.55 26.776 C 6.408 36.163 13.847 43.598 23.235 44.451 C 32.622 45.304 41.28 39.332 43.816 30.253 C 43.902 29.96 43.9 29.647 43.81 29.354 Z"
+        fill="currentColor"
+        initial="initial"
+        animate="animate"
+        whileTap="whileTap"
+        variants={variants}
+      />
+    </motion.svg>
   );
-}
-
-export default MoonIcon;
+};
