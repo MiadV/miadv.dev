@@ -26,11 +26,11 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-pre[class*="language-"]::-moz-selection,
+/* pre[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
-  background: #3c526d;
+  background: #2b5d9b;
 }
 
 pre[class*="language-"]::selection,
@@ -38,7 +38,7 @@ pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
   background: #3c526d;
-}
+} */
 
 /* Code blocks */
 pre[class*="language-"] {
@@ -101,7 +101,7 @@ pre[class*="language-"] {
 .token.selector .token.value,
 .token.string,
 .token.string .token.url-link {
-  color: #91d076;
+  color: rgba(45, 212, 191, 1);
 }
 
 .token.builtin,
@@ -130,7 +130,7 @@ pre[class*="language-"] {
 
 .token.deleted,
 .token.important {
-  color: #cd6660;
+  color: rgba(244, 63, 94, 1);
 }
 
 .token.keyword-this,

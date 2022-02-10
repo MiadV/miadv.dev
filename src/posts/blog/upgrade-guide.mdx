@@ -28,7 +28,7 @@ To learn more about what's new in Tailwind CSS v3.0, read the [Tailwind CSS v3.0
 
 Update Tailwind, as well as PostCSS and autoprefixer, using npm:
 
-```shell filename=test.sh
+```shell
 npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 ```
 
@@ -40,10 +40,14 @@ All of our first-party plugins have been updated for compatibility with v3.0.
 
 If you're using any of our plugins, make sure to update them all to the latest version at the same time to avoid version constraint errors.
 
-```html
-npm install -D tailwindcss@latest **@tailwindcss/typography@latest**
-**@tailwindcss/forms@latest** \ **@tailwindcss/aspect-ratio@latest** \
-**@tailwindcss/line-clamp@latest** \ postcss@latest \ autoprefixer@latest
+```shell
+  npm install -D tailwindcss@latest
+  @tailwindcss/typography@latest
+  **@tailwindcss/forms@latest**
+  **@tailwindcss/aspect-ratio@latest**
+  **@tailwindcss/line-clamp@latest**
+  postcss@latest
+  autoprefixer@latest
 ```
 
 ### Play CDN
@@ -52,139 +56,24 @@ For Tailwind CSS v3.0, the CSS-based CDN build we've offered in the past has bee
 
 To try it out, throw this `<script>` tag in your `<head>`:
 
-```html {1-5} showLineNumbers filename=index.html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    +
-    <title>Example</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <!-- -->
-  </body>
-</html>
+```diff html showLineNumbers filename=index.html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+-     <meta charset="utf-8" />
++     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Example</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+      <!-- -->
+    </body>
+  </html>
 ```
 
 The Play CDN is designed for development purposes only — compiling your own static CSS build is a much better choice in production.
 
 ---
-
-## Migrating to the JIT engine
-
-The new [Just-in-Time engine](/blog/just-in-time-the-next-generation-of-tailwind-css) we announced in March has replaced the classic engine in Tailwind CSS v3.0.
-
-The new engine generates the styles you need for your project on-demand, and might necessitate some small changes to your project depending on how you have Tailwind configured.
-
-If you were already opting in to `mode: 'jit'` in Tailwind CSS v2.x, you can safely remove that from your configuration in v3.0:
-
-```js tailwind.config.js
-  module.exports = {
--   mode: 'jit',
-    // ...
-  }
-```
-
-### Configure content sources
-
-Since Tailwind no longer uses PurgeCSS under the hood, we've renamed the `purge` option to `content` to better reflect what it's for:
-
-```js tailwind.config.js
-  module.exports = {
--   purge: [
-+   content: [
-      // Example content paths...
-      './public/**/*.html',
-      './src/**/*.{js,jsx,ts,tsx,vue}',
-    ],
-    theme: {
-      // ...
-    }
-    // ...
-  }
-```
-
-If you weren't already using the `purge` option in your project, it's crucial that you configure your template paths now or your compiled CSS will be empty.
-
-Since we're not using PurgeCSS under the hood anymore, some of the advanced purge options have changed. See the new [content configuration](/docs/content-configuration) documentation for more information on advanced options.
-
-### Remove dark mode configuration
-
-The dark mode feature is now enabled using the `media` strategy by default, so you can remove this key entirely from your `tailwind.config.js` file, _unless_ you're using the `class` strategy.
-
-```js tailwind.config.js
-  module.exports = {
--   darkMode: 'media',
-    // ...
-  }
-```
-
-You can also safely remove this key if it's currently set to `false`:
-
-```js filename=tailwind.config.js
-  module.exports = {
--   darkMode: false,
-    // ...
-  }
-```
-
-### Remove variant configuration
-
-In Tailwind CSS v3.0, every variant is automatically available for every utility by default, so you can remove the `variants` section from your `tailwind.config.js` file:
-
-```js filename=tailwind.config.js
-  module.exports = {
-    // ...
--   variants: {
--     extend: {
--       padding: ['hover'],
--     }
--   },
-  }
-```
-
-### Replace @variants with @layer
-
-Since all variants are now enabled by default, you no longer need to explicity enable these for custom CSS using the `@variants` or `@responsive` directives.
-
-Instead, add any custom CSS to appropriate "layer" using the `@layer` directive:
-
-```css
--  @variants hover, focus {
-+  @layer utilities {
-     .content-auto {
-       content-visibility: auto;
-     }
-   }
-```
-
-Any custom CSS added to one of Tailwind's layers will automatically support variants.
-
-See the documentation on [adding custom styles using CSS and @layer](/docs/adding-custom-styles#using-css-and-layer) for more information.
-
-### Automatic transforms and filters
-
-In Tailwind CSS v3.0, transform and filter utilities like `scale-50` and `brightness-75` will automatically take effect without needing to add the `transform`, `filter`, or `backdrop-filter` classes:
-
-```html
--
-<div
-  class="scale-50 transform grayscale filter backdrop-blur-sm backdrop-filter"
->
-  +
-  <div class="scale-50 grayscale backdrop-blur-sm"></div>
-</div>
-```
-
-While there's no harm in leaving them in your HTML, they can safely be removed.
-
----
-
-## Color palette changes
-
-Tailwind CSS v3.0 now includes every color from the extended color palette by default, including previously disabled colors like cyan, rose, fuchsia, and lime, and all five variations of gray.
 
 ### Removed color aliases
 
