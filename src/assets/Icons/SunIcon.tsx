@@ -12,7 +12,7 @@ export const whileTap = {
   rotate: 15,
 };
 
-export const SunIcon = () => {
+export const SunIcon: React.FC<{ className?: string }> = ({ className }) => {
   const raysVariants = {
     initial: { rotate: 45 },
     animate: { rotate: 0, transition },
@@ -34,7 +34,7 @@ export const SunIcon = () => {
       whileTap={whileTap}
       // Centers the rotation anchor point vertically & horizontally
       style={{ originX: "50%", originY: "50%" }}
-      className="h-6 w-6"
+      className={`h-6 w-6 ${className}`}
     >
       <motion.circle
         cx="11.9998"
