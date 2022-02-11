@@ -10,11 +10,11 @@ const BlogLayout: React.FC<{ postMeta: PostFrontMatterType }> = ({
 }) => {
   return (
     <Container>
-      <article className="prose prose-slate mx-auto prose-a:font-semibold prose-a:text-indigo-600 dark:prose-invert prose-a:dark:text-indigo-400">
+      <article className="prose prose-slate mx-auto max-w-3xl prose-a:font-semibold prose-a:text-indigo-600 dark:prose-invert prose-a:dark:text-indigo-400">
         <time dateTime={postMeta.publishedAt}>
           {format(parseISO(postMeta.publishedAt), "MMMM dd, yyyy")}
         </time>
-        <h1 className="mb-4 text-3xl font-extrabold tracking-tight  text-gray-900 dark:text-gray-50  sm:text-4xl">
+        <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-50  sm:text-4xl">
           {widontString(postMeta.title)}
         </h1>
         <div className="mt-8">{children}</div>
