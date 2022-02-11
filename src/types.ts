@@ -8,7 +8,7 @@ export type PostFrontMatterType = {
   publishedAt: string;
   excerpt: string;
   tags: string[];
+  slug: string;
   image?: string;
-  slug?: string;
   readTime: ReadTimeResults;
 };

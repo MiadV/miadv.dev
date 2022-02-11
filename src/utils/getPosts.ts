@@ -67,7 +67,7 @@ export async function getPostBySlug(postType: PostType, slug: string) {
   const readTime = readingTime(code);
   return {
     mdxSource: code,
-    frontmatter: { ...frontmatter, readTime },
+    frontmatter: { ...frontmatter, readTime, slug },
   };
 }
 
