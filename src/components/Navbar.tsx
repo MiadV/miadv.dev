@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import clsx from "clsx";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ThemeToggle } from "./ThemeToggle";
-import GithubIcon from "@/assets/Icons/GithubIcon";
-import Logo from "@/assets/Logo";
-import { IconButton } from "./Button";
+import GithubIcon from "@/Icons/GithubIcon";
+import Logo from "@/components/Logo";
 import { Dialog, Transition } from "@headlessui/react";
 
 const navItems = [
@@ -32,6 +32,7 @@ const navItems = [
 
 export const Navbar = () => {
   const [isStiky, setIsSticky] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     let offset = 50;
@@ -74,11 +75,21 @@ export const Navbar = () => {
                 {navItems.map((item) => (
                   <li className="relative" key={item.title}>
                     <Link href={item.path}>
-                      <a className="peer transition-all duration-150 hover:text-indigo-500">
+                      <a
+                        className={clsx(
+                          "peer transition-all duration-150 hover:text-indigo-500",
+                          router.asPath === item.path ? "text-indigo-500" : ""
+                        )}
+                      >
                         {item.title}
                       </a>
                     </Link>
-                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-500 transition-all duration-150 peer-hover:scale-x-100" />
+                    <span
+                      className={clsx(
+                        "absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-500 transition-all duration-150 peer-hover:scale-x-100",
+                        router.asPath === item.path ? "scale-x-100" : ""
+                      )}
+                    />
                   </li>
                 ))}
               </ul>
@@ -106,6 +117,7 @@ export const Navbar = () => {
 
 const MenuPopOver = ({ display }: { display: string }) => {
   let [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <div className={display}>
@@ -162,7 +174,10 @@ const MenuPopOver = ({ display }: { display: string }) => {
                   <Link href={item.path}>
                     <a
                       onClick={() => setIsOpen(false)}
-                      className="peer block text-lg font-semibold transition-all duration-150 hover:text-indigo-500"
+                      className={clsx(
+                        "peer block text-lg font-semibold transition-all duration-150 hover:text-indigo-500",
+                        router.asPath === item.path ? "text-indigo-500" : ""
+                      )}
                     >
                       {item.title}
                     </a>
@@ -176,11 +191,7 @@ const MenuPopOver = ({ display }: { display: string }) => {
               className="absolute top-5 right-5"
               onClick={() => setIsOpen(false)}
             >
-              <svg
-                viewBox="0 0 10 10"
-                className="h-4 w-4 overflow-visible"
-                aria-hidden="true"
-              >
+              <svg viewBox="0 0 10 10" className="h-4 w-4" aria-hidden="true">
                 <path
                   d="M0 0L10 10M10 0L0 10"
                   fill="none"

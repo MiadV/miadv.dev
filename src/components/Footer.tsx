@@ -1,10 +1,10 @@
 import React from "react";
-import Logo from "@/assets/Logo";
-import EmailIcon from "@/assets/Icons/EmailIcon";
-import InstagramIcon from "@/assets/Icons/InstagramIcon";
-import GithubIcon from "@/assets/Icons/GithubIcon";
-import LinkedinIcon from "@/assets/Icons/LinkedinIcon";
-import YoutubeIcon from "@/assets/Icons/YoutubeIcon";
+import Logo from "@/components/Logo";
+import EmailIcon from "@/Icons/EmailIcon";
+import InstagramIcon from "@/Icons/InstagramIcon";
+import GithubIcon from "@/Icons/GithubIcon";
+import LinkedinIcon from "@/Icons/LinkedinIcon";
+import YoutubeIcon from "@/Icons/YoutubeIcon";
 
 const socialLinks = [
   {

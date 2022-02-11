@@ -1,36 +1,33 @@
 import React from "react";
+import type { InferGetStaticPropsType } from "next";
+import { getAllPostsFrontmatter } from "@/utils/getPosts";
 import { AboutMe } from "@/components/AboutMe";
 import { Projects } from "@/components/Projects";
 import { ContactMe } from "@/components/ContactMe";
 import { LatestBlogs } from "@/components/LatestBlogs";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import Hero from "@/components/Hero";
-import { getAllPostsFrontmatter } from "@/utils/getPosts";
-import type { PostFrontMatterType } from "@/types";
 
-const Home: React.FC<{ latestBlogs: PostFrontMatterType[] }> = ({
+export default function Home({
   latestBlogs,
-}) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
+      <header>
+        <Navbar />
+      </header>
       <Hero />
-      <main className="max-w-screen-lg px-6 sm:px-8 lg:mx-auto xl:px-12">
+      <main className="mx-auto max-w-screen-lg px-6 sm:px-8 xl:px-12">
         <AboutMe />
         <Projects />
         <LatestBlogs latestBlogs={latestBlogs} />
         <ContactMe />
       </main>
+      <Footer />
     </>
   );
-};
-// Home.defaultProps = {
-//   layoutProps: {
-//     meta: {
-//       title: "My Personal Blog | Projects, Articles...",
-//     },
-//   },
-// };
-
-export default Home;
+}
 
 export async function getStaticProps() {
   const allFrontMatter = await getAllPostsFrontmatter("blog");

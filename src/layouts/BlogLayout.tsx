@@ -1,12 +1,25 @@
 import React from "react";
+import type { PostFrontMatterType } from "@/types";
+import Container from "./Container";
+import { widontString } from "../utils/widontString";
+import { format, parseISO } from "date-fns";
 
-const BlogLayout: React.FC = ({ children }) => {
+const BlogLayout: React.FC<{ postMeta: PostFrontMatterType }> = ({
+  children,
+  postMeta,
+}) => {
   return (
-    <div className="mt-24 px-4 sm:px-6 md:px-8 xl:px-12">
+    <Container>
       <article className="prose prose-slate mx-auto prose-a:font-semibold prose-a:text-indigo-600 dark:prose-invert prose-a:dark:text-indigo-400">
-        {children}
+        <time dateTime={postMeta.publishedAt}>
+          {format(parseISO(postMeta.publishedAt), "MMMM dd, yyyy")}
+        </time>
+        <h1 className="mb-4 text-3xl font-extrabold tracking-tight  text-gray-900 dark:text-gray-50  sm:text-4xl">
+          {widontString(postMeta.title)}
+        </h1>
+        <div className="mt-8">{children}</div>
       </article>
-    </div>
+    </Container>
   );
 };
 export default BlogLayout;

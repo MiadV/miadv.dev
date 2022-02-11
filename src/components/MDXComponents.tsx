@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import Pre from "./Pre";
 
@@ -18,10 +18,14 @@ const CustomLink: React.FC<{ href: string }> = (props) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
+const RoundedImage: React.FC<ImageProps> = (props) => {
+  return <Image alt={props.alt} className="rounded-xl" {...props} />;
+};
+
 const MDXComponents = {
   a: CustomLink,
-  pre: (props) => <Pre {...props} />,
-  Image,
+  pre: Pre,
+  Image: RoundedImage,
 };
 
 export default MDXComponents;

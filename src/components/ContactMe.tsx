@@ -1,10 +1,10 @@
 import React from "react";
 import { IconButton } from "./Button";
 import { Card } from "./Card";
-import EmailIcon from "@/assets/Icons/EmailIcon";
-import InstagramIcon from "@/assets/Icons/InstagramIcon";
-import LinkedinIcon from "@/assets/Icons/LinkedinIcon";
-import PaperPlaneIcon from "@/assets/Icons/PaperPlaneIcon";
+import EmailIcon from "@/Icons/EmailIcon";
+import InstagramIcon from "@/Icons/InstagramIcon";
+import LinkedinIcon from "@/Icons/LinkedinIcon";
+import PaperPlaneIcon from "@/Icons/PaperPlaneIcon";
 
 const socialLinks = [
   {

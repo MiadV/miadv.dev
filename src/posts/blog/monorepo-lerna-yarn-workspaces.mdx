@@ -3,12 +3,13 @@ draft: false
 title: "Creating a Monorepo with Lerna & Yarn Workspaces"
 publishedAt: "2019-03-29"
 excerpt: "In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process.  test, and release process. test, and release process.test, and release process."
-image: "/static/images/monorepo-lerna-yarn-workspaces/banner.png"
+image: "/images/monorepo-lerna-yarn-workspaces/banner.png"
+tags: ["Test-Tag6", "Test-Tag7"]
 ---
 
 <Image
   alt={`Creating a Monorepo with Lerna & Yarn Workspace`}
-  src={`/static/images/monorepo-lerna-yarn-workspaces/banner.png`}
+  src={`/images/monorepo-lerna-yarn-workspaces/banner.png`}
   width={1175}
   height={505}
   priority
@@ -52,7 +53,7 @@ You can either follow along or [view the finished repo here](https://github.com/
 
 Okay, let’s begin! First, let’s create a new project and set up Lerna.
 
-```bash
+```bash filename=bash.sh
 $ mkdir monorepo
 $ cd monorepo
 $ npx lerna init
@@ -250,7 +251,7 @@ Then we can use `yarn dev` to view our Button 🎉
 
 <Image
   alt={`Button`}
-  src={`/static/images/monorepo-lerna-yarn-workspaces/button.png`}
+  src={`/images/monorepo-lerna-yarn-workspaces/button.png`}
   width={856}
   height={190}
 />
@@ -388,7 +389,7 @@ Our Storybook instance should still be running via `yarn dev`, but if not, then 
 
 <Image
   alt={`Storybook`}
-  src={`/static/images/monorepo-lerna-yarn-workspaces/storybook.png`}
+  src={`/images/monorepo-lerna-yarn-workspaces/storybook.png`}
   width={862}
   height={482}
 />
@@ -486,7 +487,7 @@ Congrats! 🎉 The tags have been pushed to GitHub. If we wanted to release our 
 
 <Image
   alt={`Yarn Workspaces`}
-  src={`/static/images/monorepo-lerna-yarn-workspaces/tags.png`}
+  src={`/images/monorepo-lerna-yarn-workspaces/tags.png`}
   width={864}
   height={337}
 />

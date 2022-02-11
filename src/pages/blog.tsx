@@ -1,81 +1,106 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
+import { format, parseISO } from "date-fns";
+import debounce from "lodash.debounce";
 import Link from "next/link";
-import MainLayout from "@/layouts/MainLayout";
+import type { InferGetStaticPropsType } from "next";
 import { getAllPostsFrontmatter } from "@/utils/getPosts";
-import type { PostFrontMatterType } from "@/types";
-import { widontString } from "../utils/widontString";
+import { widontString } from "@/utils/widontString";
+import Container from "@/layouts/Container";
+import SearchInput from "@/components/SearchInput";
+import { Card } from "@/components/Card";
+import { Button } from "@/components/Button";
+import ChevronRightIcon from "@/Icons/ChevronRightIcon";
 
 export default function Blog({
-  allBlogsData,
-}: {
-  allBlogsData: PostFrontMatterType[];
-}) {
-  return (
-    <>
-      <header className="pb-8 sm:text-center">
-        <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
-          Blog
-        </h1>
-        <p className="text-lg">
-          {widontString("My Personal Blog | Projects, Articles...")}
-        </p>
-      </header>
+  allBlogsSorted,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [searchValue, setSearchValue] = useState("");
 
-      <div className="relative mb-4 w-full">
-        <input
-          aria-label="Search articles"
-          type="text"
-          // onChange={(e) => setSearchValue(e.target.value)}
-          placeholder="Search articles"
-          className="block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
-        />
-        <svg
-          className="absolute right-3 top-3 h-5 w-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
+  const filteredBlogPosts = allBlogsSorted.filter((blog) => {
+    const searchContent = blog.title + blog.excerpt + blog.tags.join(" ");
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
+  });
+
+  const onChangeDebounced = useMemo(
+    () => debounce((e) => setSearchValue(e.target.value), 500),
+    []
+  );
+
+  return (
+    <Container>
+      <div className="mx-auto w-full max-w-screen-sm">
+        <div className="pb-8">
+          <div className="sm:text-center">
+            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
+              Blog
+            </h1>
+            <p className="mb-4 text-lg">
+              {widontString("My Personal Blog | Projects, Articles...")}
+            </p>
+          </div>
+          <SearchInput onChange={onChangeDebounced} />
+        </div>
+        <ul className="space-y-8">
+          {filteredBlogPosts.map((blogItem) => (
+            <li key={blogItem.slug}>
+              <Card className="flex h-full flex-col justify-between">
+                <div className="flex items-center">
+                  <div>
+                    <Link href={`/blog/${blogItem.slug!}`}>
+                      <a>
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
+                          {widontString(blogItem.title)}
+                        </h3>
+                      </a>
+                    </Link>
+                    <div className="mt-2 text-xs font-medium text-gray-500">
+                      <time dateTime={blogItem.publishedAt}>
+                        {" "}
+                        {format(
+                          parseISO(blogItem.publishedAt),
+                          "MMMM dd, yyyy"
+                        )}
+                      </time>
+                      {" • "}
+                      {blogItem.readTime.text}
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4">{blogItem.excerpt}</p>
+                <div className="mt-4">
+                  <Link href={`/blog/${blogItem.slug!}`} passHref>
+                    <Button as="a" variant="ghost" size="sm">
+                      Read More
+                      <ChevronRightIcon className="ml-2 h-5 w-5 fill-indigo-500" />
+                    </Button>
+                  </Link>
+                </div>
+              </Card>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul>
-        {allBlogsData.map(({ slug, title, publishedAt, readTime }) => (
-          <li key={slug}>
-            {title}
-            <br />
-            <Link href={`/blog/${slug}`}>
-              <a>{slug}</a>
-            </Link>
-            <br />
-            {publishedAt} {` • `}
-            {readTime.text}
-          </li>
-        ))}
-      </ul>
-    </>
+    </Container>
   );
 }
 
-Blog.defaultProps = {
-  layoutProps: {
-    Layout: MainLayout,
-    meta: {
-      title: "My Personal Blog | Projects, Articles...",
-    },
-  },
-};
-
 export async function getStaticProps() {
-  const allBlogsData = await getAllPostsFrontmatter("blog");
+  const allFrontMatter = await getAllPostsFrontmatter("blog");
+
+  const allBlogsSorted = allFrontMatter.sort(
+    ({ publishedAt: a }, { publishedAt: b }) => {
+      if (a < b) {
+        return 1;
+      } else if (a > b) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  );
   return {
     props: {
-      allBlogsData,
+      allBlogsSorted,
     },
   };
 }

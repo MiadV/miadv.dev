@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
-import { SunIcon } from "@/assets/Icons/SunIcon";
-import { MoonIcon } from "@/assets/Icons/MoonIcon";
+import { SunIcon } from "@/Icons/SunIcon";
+import { MoonIcon } from "@/Icons/MoonIcon";
 
 function update() {
   if (
