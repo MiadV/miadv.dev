@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import type { PostFrontMatterType } from "@/types";
 import Container from "./Container";
@@ -12,10 +14,11 @@ const discussUrl = (slug: string) =>
     `https://miadv.dev/blog/${slug}`
   )}`;
 
-const BlogLayout: React.FC<{ postMeta: PostFrontMatterType }> = ({
-  children,
-  postMeta,
-}) => {
+const BlogLayout: React.FC<{
+  postMeta: PostFrontMatterType;
+  nextBlog: PostFrontMatterType;
+  prevBlog: PostFrontMatterType;
+}> = ({ children, postMeta, prevBlog, nextBlog }) => {
   return (
     <Container>
       <article className="prose prose-slate mx-auto prose-a:font-semibold prose-a:text-indigo-600 dark:prose-invert prose-a:dark:text-indigo-400">
@@ -23,7 +26,8 @@ const BlogLayout: React.FC<{ postMeta: PostFrontMatterType }> = ({
           <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
             {widontString(postMeta.title)}
           </h1>
-          <span className="block text-sm font-medium text-gray-500">
+
+          <span className="block text-sm font-medium text-gray-500 dark:text-gray-400">
             <time dateTime={postMeta.publishedAt}>
               {format(parseISO(postMeta.publishedAt), "MMMM dd, yyyy")}
             </time>
@@ -33,8 +37,8 @@ const BlogLayout: React.FC<{ postMeta: PostFrontMatterType }> = ({
         </header>
 
         <div className="mt-4">{children}</div>
-        <footer className="not-prose mt-8 space-y-4">
-          <div className="text-sm font-medium">
+        <footer className="not-prose mt-8">
+          <div className="mt-8 border-y border-slate-200 py-4 text-sm font-medium dark:border-slate-700">
             <a
               href={discussUrl(postMeta.slug)}
               target="_blank"
@@ -53,7 +57,60 @@ const BlogLayout: React.FC<{ postMeta: PostFrontMatterType }> = ({
               {"Edit on GitHub"}
             </a>
           </div>
-          <Card>Subscribe</Card>
+
+          <Card className="mt-8">
+            <div className="flex items-center">
+              <Image
+                alt="Miad Vosoughi Nia"
+                height={24}
+                width={24}
+                src="/avatar.jpg"
+                className="rounded-full bg-gray-400"
+              />
+              <p className="ml-2 text-sm text-gray-500 dark:text-gray-400">
+                Miad Vosoughi
+              </p>
+            </div>
+          </Card>
+
+          <div className="mt-12 flex flex-col justify-between space-y-4 md:flex-row md:space-y-0 md:space-x-8">
+            {(nextBlog || prevBlog) && (
+              <>
+                <div className="md:w-1/2">
+                  {prevBlog && (
+                    <>
+                      <span className="mb-2 block text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                        {"← "} Previous Article
+                      </span>
+                      <div>
+                        <Link href={`/blog/${prevBlog.slug}`}>
+                          <a className="font-medium capitalize text-indigo-600 hover:underline dark:text-indigo-400">
+                            {prevBlog.title}
+                          </a>
+                        </Link>
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="md:w-1/2">
+                  {nextBlog && (
+                    <div className="md:flex md:flex-col">
+                      <span className="mb-2 block text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 md:text-right">
+                        Next Article {" →"}
+                      </span>
+                      <div className="ml-auto">
+                        <Link href={`/blog/${nextBlog.slug}`}>
+                          <a className="font-medium capitalize text-indigo-600 hover:underline dark:text-indigo-400">
+                            {nextBlog.title}
+                          </a>
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
         </footer>
       </article>
     </Container>
