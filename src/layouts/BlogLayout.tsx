@@ -73,7 +73,7 @@ const BlogLayout: React.FC<{
             </div>
           </Card>
 
-          <div className="mt-12 flex flex-col justify-between space-y-4 md:flex-row md:space-y-0 md:space-x-8">
+          <nav className="mt-12 flex flex-col justify-between space-y-4 md:flex-row md:space-y-0 md:space-x-8">
             {(nextBlog || prevBlog) && (
               <>
                 <div className="md:w-1/2">
@@ -110,7 +110,7 @@ const BlogLayout: React.FC<{
                 </div>
               </>
             )}
-          </div>
+          </nav>
         </footer>
       </article>
     </Container>
