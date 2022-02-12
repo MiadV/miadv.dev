@@ -38,10 +38,7 @@ export const Footer = () => {
   return (
     <footer className="border-t border-slate-200 bg-gray-200 dark:border-slate-700 dark:bg-slate-800">
       <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between space-y-4 py-4 px-4 sm:flex-row sm:space-y-0 md:px-8">
-        <span className="basis-1/3">
-          <Logo />
-        </span>
-        <ul className="flex basis-1/3 items-center justify-center space-x-4">
+        <ul className="flex items-center justify-center space-x-4">
           {socialLinks.map((link) => (
             <li key={link.lable}>
               <a
@@ -56,7 +53,7 @@ export const Footer = () => {
             </li>
           ))}
         </ul>
-        <div className="basis-1/3">
+        <div>
           <p className="text-right text-sm">
             Copyright &copy; {new Date().getFullYear()} Miad V.
           </p>

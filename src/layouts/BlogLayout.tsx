@@ -1,11 +1,11 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import type { PostFrontMatterType } from "@/types";
 import Container from "./Container";
-import { widontString } from "../utils/widontString";
-import { Card } from "@/components/Card";
+import { widontString } from "@/utils/widontString";
+import SubscribeCard from "@/components/SubscribeCard";
+import Image from "next/image";
 
 const editUrl = (slug: string) =>
   `https://github.com/miadv/miadv.dev/edit/main/posts/blog/${slug}.mdx`;
@@ -22,21 +22,40 @@ const BlogLayout: React.FC<{
   return (
     <Container>
       <article className="prose prose-slate mx-auto prose-a:font-semibold prose-a:text-indigo-600 dark:prose-invert prose-a:dark:text-indigo-400">
-        <header>
-          <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+        <header className="not-prose">
+          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
             {widontString(postMeta.title)}
           </h1>
 
-          <span className="block text-sm font-medium text-gray-500 dark:text-gray-400">
-            <time dateTime={postMeta.publishedAt}>
-              {format(parseISO(postMeta.publishedAt), "MMMM dd, yyyy")}
-            </time>
-            {" • "}
-            {postMeta.readTime.text}
-          </span>
+          <div className="mt-6 flex flex-col xs:flex-row xs:items-center">
+            <div className="flex items-center">
+              <Image
+                alt="Miad Vosoughi Nia"
+                height={25}
+                width={25}
+                src="/avatar.jpg"
+                className="overflow-hidden rounded-full bg-gray-400"
+              />
+              <div className="ml-2">
+                <a
+                  href="https://twitter.com/Miad_Vosoughi"
+                  className="text-sm font-medium text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400"
+                >
+                  @Miad_Vosoughi
+                </a>
+              </div>
+            </div>
+            <span className="mt-2 block text-sm font-medium text-gray-500 dark:text-gray-400 xs:ml-auto xs:mt-0">
+              <time dateTime={postMeta.publishedAt}>
+                {format(parseISO(postMeta.publishedAt), "MMMM dd, yyyy")}
+              </time>
+              {" • "}
+              {postMeta.readTime.text}
+            </span>
+          </div>
         </header>
 
-        <div className="mt-4">{children}</div>
+        <div className="mt-6">{children}</div>
         <footer className="not-prose mt-8">
           <div className="mt-8 border-y border-slate-200 py-4 text-sm font-medium dark:border-slate-700">
             <a
@@ -58,22 +77,13 @@ const BlogLayout: React.FC<{
             </a>
           </div>
 
-          <Card className="mt-8">
-            <div className="flex items-center">
-              <Image
-                alt="Miad Vosoughi Nia"
-                height={24}
-                width={24}
-                src="/avatar.jpg"
-                className="rounded-full bg-gray-400"
-              />
-              <p className="ml-2 text-sm text-gray-500 dark:text-gray-400">
-                Miad Vosoughi
-              </p>
-            </div>
-          </Card>
+          <div> {postMeta.tags.map((tag) => tag)}</div>
 
-          <nav className="mt-12 flex flex-col justify-between space-y-4 md:flex-row md:space-y-0 md:space-x-8">
+          <div className="my-8">
+            <SubscribeCard />
+          </div>
+
+          <nav className="mt-8 flex flex-col justify-between space-y-4 md:flex-row md:space-y-0 md:space-x-8">
             {(nextBlog || prevBlog) && (
               <>
                 <div className="md:w-1/2">

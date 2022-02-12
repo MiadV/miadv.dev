@@ -5,7 +5,7 @@ import useTypingText from "@/hooks/useTypingText";
 
 const Hero: React.FC = () => {
   const { typingText } = useTypingText(
-    "Self-taught Web Developer | Front End Developer | React.js Enthusiast",
+    "Web Developer | Front End Developer | React.js Enthusiast",
     100,
     1000
   );
