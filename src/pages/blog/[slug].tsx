@@ -19,7 +19,7 @@ export default function Blog({
   const Component = useMemo(() => getMDXComponent(mdxSource), [mdxSource]);
   return (
     <BlogLayout postMeta={frontmatter} nextBlog={next} prevBlog={prev}>
-      <Component components={{ ...MDXComponents }} />
+      <Component components={{ ...MDXComponents } as any} />
     </BlogLayout>
   );
 }

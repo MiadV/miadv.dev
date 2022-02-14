@@ -1,15 +1,12 @@
 import React, { useState, useMemo } from "react";
-import { format, parseISO } from "date-fns";
 import debounce from "lodash.debounce";
-import Link from "next/link";
 import type { InferGetStaticPropsType } from "next";
 import { getAllPostsFrontmatter } from "@/utils/getPosts";
 import { widontString } from "@/utils/widontString";
 import Container from "@/layouts/Container";
-import SearchInput from "@/components/SearchInput";
-import { Card } from "@/components/Card";
-import { Button } from "@/components/Button";
-import ChevronRightIcon from "@/Icons/ChevronRightIcon";
+import Input from "@/components/Input";
+import SearchIcon from "@/Icons/SearchIcon";
+import { BlogListItem } from "@/components/BlogListItem";
 
 export default function Blog({
   allBlogsSorted,
@@ -38,44 +35,18 @@ export default function Blog({
               {widontString("My Personal Blog | Projects, Articles...")}
             </p>
           </div>
-          <SearchInput onChange={onChangeDebounced} />
+          <Input
+            onChange={onChangeDebounced}
+            type="text"
+            placeholder="Search articles"
+            aria-label="search for articles"
+            icon={<SearchIcon className="absolute right-3 top-2.5 h-5 w-5" />}
+          />
         </div>
         <ul className="space-y-8">
           {filteredBlogPosts.map((blogItem) => (
             <li key={blogItem.slug}>
-              <Card className="flex h-full flex-col justify-between">
-                <div className="flex items-center">
-                  <div>
-                    <Link href={`/blog/${blogItem.slug!}`}>
-                      <a>
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
-                          {widontString(blogItem.title)}
-                        </h3>
-                      </a>
-                    </Link>
-                    <div className="mt-2 text-xs font-medium text-gray-500">
-                      <time dateTime={blogItem.publishedAt}>
-                        {" "}
-                        {format(
-                          parseISO(blogItem.publishedAt),
-                          "MMMM dd, yyyy"
-                        )}
-                      </time>
-                      {" • "}
-                      {blogItem.readTime.text}
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-4">{blogItem.excerpt}</p>
-                <div className="mt-4">
-                  <Link href={`/blog/${blogItem.slug!}`} passHref>
-                    <Button as="a" variant="ghost" size="sm">
-                      Read More
-                      <ChevronRightIcon className="ml-2 h-5 w-5 fill-indigo-500" />
-                    </Button>
-                  </Link>
-                </div>
-              </Card>
+              <BlogListItem blogItem={blogItem} />
             </li>
           ))}
         </ul>

@@ -8,7 +8,6 @@ import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { rehypeCodeMetaAttribute } from "./rehypeCodeMetaAttribute";
-import { h } from "hastscript";
 import type { PostFrontMatterType, PostType } from "@/types";
 
 const root = path.join(process.cwd(), "/src");
@@ -67,7 +66,14 @@ export async function getPostBySlug(postType: PostType, slug: string) {
   const readTime = readingTime(code);
   return {
     mdxSource: code,
-    frontmatter: { ...frontmatter, readTime, slug },
+    frontmatter: {
+      ...frontmatter,
+      tags: frontmatter.tags
+        ? frontmatter.tags.map((tag: string) => tag.split(" ").join("-"))
+        : [],
+      readTime,
+      slug,
+    },
   };
 }
 
@@ -94,6 +100,9 @@ export async function getAllPostsFrontmatter(
     if (frontmatter.draft !== true) {
       allFrontMatter.push({
         ...frontmatter,
+        tags: frontmatter.tags
+          ? frontmatter.tags.map((tag: string) => tag.split(" ").join("-"))
+          : [],
         slug: fileName,
         readTime: readTime,
       });

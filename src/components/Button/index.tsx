@@ -14,6 +14,7 @@ export interface ButtonProps extends BaseButtonProps {
   as?: string;
   isExternal?: boolean;
   type?: "button" | "submit" | "reset";
+  isLoading?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -122,7 +123,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       </button>
     );
 
-    return Element;
+    return (
+      <span className={`relative ${fullWidth ? "w-full" : undefined}`}>
+        {Element}
+      </span>
+    );
   }
 );
 

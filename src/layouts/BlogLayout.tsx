@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { format, parseISO } from "date-fns";
 import type { PostFrontMatterType } from "@/types";
 import Container from "./Container";
 import { widontString } from "@/utils/widontString";
 import SubscribeCard from "@/components/SubscribeCard";
-import Image from "next/image";
+import Tag from "@/components/Tag";
 
 const editUrl = (slug: string) =>
   `https://github.com/miadv/miadv.dev/edit/main/posts/blog/${slug}.mdx`;
@@ -77,7 +78,11 @@ const BlogLayout: React.FC<{
             </a>
           </div>
 
-          <div> {postMeta.tags.map((tag) => tag)}</div>
+          <div className="mt-4 space-x-2 space-y-2">
+            {postMeta.tags.map((tag) => (
+              <Tag key={tag}>{tag}</Tag>
+            ))}
+          </div>
 
           <div className="my-8">
             <SubscribeCard />
