@@ -49,7 +49,7 @@ export const AboutMe = () => {
         </div>
 
         <div className="relative mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:mt-0 xl:-right-20">
-          <span className="absolute inset-y-2/4 right-0 -z-10 h-96 w-96 -translate-y-1/2 rounded-full bg-gradient-radial from-indigo-500/40 via-fuchsia-400/10 blur-2xl" />
+          <span className="absolute inset-y-2/4 right-0 -z-10 h-96 max-h-full w-96 max-w-full -translate-y-1/2 rounded-full bg-gradient-radial from-indigo-500/40 via-fuchsia-400/10 blur-2xl" />
           <FloatingItems
             Icon={
               <WebDevIcon className="fill-indigo-600 dark:fill-indigo-50" />

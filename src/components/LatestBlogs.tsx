@@ -59,9 +59,9 @@ export const LatestBlogs: React.FC<{
       </h2>
       <span className="mx-auto mt-2 mb-8 block h-1.5 w-[80px] rounded-full bg-indigo-600" />
 
-      <div id="latest-blogs__carousel" className="!-m-8">
+      <div id="latest-blogs__carousel" className="sm:!-m-8">
         <Swiper
-          className="!p-8" // !p-8 to fix box-shadow cropping cused by overflow:hidden
+          className="!px-4 !py-8 sm:!p-8" // !p-8 to fix box-shadow cropping caused by overflow:hidden
           modules={[Mousewheel, Pagination]}
           pagination={{
             clickable: true,
@@ -71,7 +71,7 @@ export const LatestBlogs: React.FC<{
           spaceBetween={46}
           slidesPerView={1}
           breakpoints={{
-            "640": {
+            640: {
               slidesPerView: 2,
             },
           }}
