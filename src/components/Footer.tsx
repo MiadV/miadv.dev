@@ -1,16 +1,15 @@
 import React from "react";
-import Logo from "@/components/Logo";
 import EmailIcon from "@/Icons/EmailIcon";
 import InstagramIcon from "@/Icons/InstagramIcon";
-import GithubIcon from "@/Icons/GithubIcon";
 import LinkedinIcon from "@/Icons/LinkedinIcon";
 import YoutubeIcon from "@/Icons/YoutubeIcon";
+import TwitterIcon from "@/Icons/TwitterIcon";
 
 const socialLinks = [
   {
-    lable: "github profile",
-    Icon: <GithubIcon />,
-    href: "https://github.com/miadv",
+    lable: "twitter profile",
+    Icon: <TwitterIcon />,
+    href: "https://twitter.com/Miad_Vosoughi",
   },
   {
     lable: "email address",

@@ -2,10 +2,10 @@ import React, { Fragment, useState, useEffect } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Dialog, Transition } from "@headlessui/react";
 import { ThemeToggle } from "./ThemeToggle";
 import GithubIcon from "@/Icons/GithubIcon";
 import Logo from "@/components/Logo";
-import { Dialog, Transition } from "@headlessui/react";
 
 const navItems = [
   {
@@ -55,7 +55,7 @@ export const Navbar = () => {
       id="navbar"
       className={clsx(
         "fixed inset-x-0 top-0 z-40 h-16 transition-colors duration-300",
-        isStiky
+        isStiky || router.asPath !== "/"
           ? "border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800"
           : "bg-transparent"
       )}

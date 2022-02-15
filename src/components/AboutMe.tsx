@@ -42,10 +42,10 @@ export const AboutMe = () => {
             maecenas et nibh arcu. Interdum in curabitur ac magna cras. Leo dui
             nulla fames elementum morbi eget etiam sed magnis.
           </p>
-
+          {/* 
           <div className="mt-8">
             <Button>Download CV</Button>
-          </div>
+          </div> */}
         </div>
 
         <div className="relative mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:mt-0 xl:-right-20">
