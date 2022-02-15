@@ -1,20 +1,21 @@
-import React, { useState, useMemo } from "react";
-import debounce from "lodash.debounce";
-import type { InferGetStaticPropsType } from "next";
-import { getAllPostsFrontmatter } from "@/utils/getPosts";
-import { widontString } from "@/utils/widontString";
-import Container from "@/layouts/Container";
-import Input from "@/components/Input";
-import SearchIcon from "@/Icons/SearchIcon";
-import { BlogListItem } from "@/components/BlogListItem";
+import React, { useState, useMemo } from 'react';
+import debounce from 'lodash.debounce';
+import type { InferGetStaticPropsType } from 'next';
+import { getAllPostsFrontmatter } from '@/utils/getPosts';
+import { widontString } from '@/utils/widontString';
+import Container from '@/layouts/Container';
+import Input from '@/components/Input';
+import SearchIcon from '@/Icons/SearchIcon';
+import { BlogListItem } from '@/components/BlogListItem';
+import SEO from '@/components/SEO';
 
 export default function Blog({
   allBlogsSorted,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const filteredBlogPosts = allBlogsSorted.filter((blog) => {
-    const searchContent = blog.title + blog.excerpt + blog.tags.join(" ");
+    const searchContent = blog.title + blog.excerpt + blog.tags.join(' ');
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());
   });
 
@@ -24,39 +25,45 @@ export default function Blog({
   );
 
   return (
-    <Container>
-      <div className="mx-auto w-full max-w-screen-sm">
-        <div className="pb-8">
-          <div className="sm:text-center">
-            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
-              Blog
-            </h1>
-            <p className="mb-4 text-lg">
-              {widontString("My Personal Blog | Projects, Articles...")}
-            </p>
+    <>
+      <SEO
+        title="Blog – Miad Vosoughi"
+        description="Some of public projects and articles about web development, front-end engineering, react-js."
+      />
+      <Container>
+        <div className="mx-auto w-full max-w-screen-sm">
+          <div className="pb-8">
+            <div className="sm:text-center">
+              <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
+                Blog
+              </h1>
+              <p className="mb-4 text-lg">
+                {widontString('My Personal Blog | Projects, Articles...')}
+              </p>
+            </div>
+            <Input
+              onChange={onChangeDebounced}
+              type="text"
+              placeholder="Search articles"
+              aria-label="search for articles"
+              icon={<SearchIcon className="absolute right-3 top-2.5 h-5 w-5" />}
+            />
           </div>
-          <Input
-            onChange={onChangeDebounced}
-            type="text"
-            placeholder="Search articles"
-            aria-label="search for articles"
-            icon={<SearchIcon className="absolute right-3 top-2.5 h-5 w-5" />}
-          />
+          <ul className="space-y-8">
+            {filteredBlogPosts.map((blogItem) => (
+              <li key={blogItem.slug}>
+                <BlogListItem blogItem={blogItem} />
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="space-y-8">
-          {filteredBlogPosts.map((blogItem) => (
-            <li key={blogItem.slug}>
-              <BlogListItem blogItem={blogItem} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 }
 
 export async function getStaticProps() {
-  const allFrontMatter = await getAllPostsFrontmatter("blog");
+  const allFrontMatter = await getAllPostsFrontmatter('blog');
 
   const allBlogsSorted = allFrontMatter.sort(
     ({ publishedAt: a }, { publishedAt: b }) => {

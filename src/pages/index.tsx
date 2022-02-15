@@ -8,12 +8,14 @@ import { LatestBlogs } from '@/components/LatestBlogs';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import Hero from '@/components/Hero';
+import SEO from '@/components/SEO';
 
 export default function Home({
   latestBlogs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
+      <SEO />
       <header>
         <Navbar />
       </header>

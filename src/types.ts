@@ -1,11 +1,12 @@
-import type { ReadTimeResults } from "reading-time";
+import type { ReadTimeResults } from 'reading-time';
 
-export type PostType = "blog";
+export type PostType = 'blog';
 
 export type PostFrontMatterType = {
   draft: boolean;
   title: string;
   publishedAt: string;
+  modifiedAt?: string;
   excerpt: string;
   tags: string[];
   slug: string;

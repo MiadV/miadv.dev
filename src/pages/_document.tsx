@@ -17,6 +17,7 @@ export default class Document extends NextDocument {
       <Html lang="en" className="scroll-pt-[2rem] scroll-smooth">
         <Head>
           <link href="/static/favicons/site.webmanifest" rel="manifest" />
+          {/* TODO replace favicons */}
           <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
           <link
             href="/static/favicons/apple-touch-icon.png"
@@ -53,6 +54,7 @@ export default class Document extends NextDocument {
             href="/feeds/feed.xml"
           />
 
+          {/* TODO integrate analytics & google verifications */}
           {/* <meta content="14d2e73487fa6c71" name="yandex-verification" />
           <meta
             content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
