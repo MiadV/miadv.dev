@@ -4,6 +4,7 @@ import "swiper/css/pagination";
 //
 import "@/styles/main.css";
 import React from "react";
+import { ThemeProvider } from "next-themes";
 import ProgressBar from "@badrap/bar-of-progress";
 import type { AppProps } from "next/app";
 import { Router } from "next/router";
@@ -20,7 +21,11 @@ Router.events.on("routeChangeComplete", () => progress.finish());
 Router.events.on("routeChangeError", () => progress.finish());
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider attribute="class">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;
