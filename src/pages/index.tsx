@@ -1,13 +1,13 @@
-import React from "react";
-import type { InferGetStaticPropsType } from "next";
-import { getAllPostsFrontmatter } from "@/utils/getPosts";
-import { AboutMe } from "@/components/AboutMe";
-import { Projects } from "@/components/Projects";
-import { ContactMe } from "@/components/ContactMe";
-import { LatestBlogs } from "@/components/LatestBlogs";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import Hero from "@/components/Hero";
+import React from 'react';
+import type { InferGetStaticPropsType } from 'next';
+import { getAllPostsFrontmatter } from '@/utils/getPosts';
+import { AboutMe } from '@/components/AboutMe';
+import { Projects } from '@/components/Projects';
+import { ContactMe } from '@/components/ContactMe';
+import { LatestBlogs } from '@/components/LatestBlogs';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import Hero from '@/components/Hero';
 
 export default function Home({
   latestBlogs,
@@ -30,7 +30,7 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  const allFrontMatter = await getAllPostsFrontmatter("blog");
+  const allFrontMatter = await getAllPostsFrontmatter('blog');
 
   const latestBlogs = allFrontMatter
     .sort(({ publishedAt: a }, { publishedAt: b }) => {

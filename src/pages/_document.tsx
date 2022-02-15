@@ -4,7 +4,7 @@ import NextDocument, {
   Main,
   NextScript,
   DocumentContext,
-} from "next/document";
+} from 'next/document';
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
@@ -15,7 +15,50 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html lang="en" className="scroll-pt-[2rem] scroll-smooth">
-        <Head></Head>
+        <Head>
+          <link href="/static/favicons/site.webmanifest" rel="manifest" />
+          <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
+          <link
+            href="/static/favicons/apple-touch-icon.png"
+            rel="apple-touch-icon"
+            sizes="180x180"
+          />
+          <link
+            href="/static/favicons/favicon-32x32.png"
+            rel="icon"
+            sizes="32x32"
+            type="image/png"
+          />
+          <link
+            href="/static/favicons/favicon-16x16.png"
+            rel="icon"
+            sizes="16x16"
+            type="image/png"
+          />
+          <link
+            color="#4F46E5"
+            href="/static/favicons/safari-pinned-tab.svg"
+            rel="mask-icon"
+          />
+          <meta content="#ffffff" name="theme-color" />
+          <meta content="#ffffff" name="msapplication-TileColor" />
+          <meta
+            content="/static/favicons/browserconfig.xml"
+            name="msapplication-config"
+          />
+
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            href="/feeds/feed.xml"
+          />
+
+          {/* <meta content="14d2e73487fa6c71" name="yandex-verification" />
+          <meta
+            content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
+            name="google-site-verification"
+          /> */}
+        </Head>
         <body className="relative bg-gray-50 text-gray-600 antialiased selection:bg-fuchsia-200 selection:text-gray-900 dark:bg-gray-900  dark:text-gray-400 dark:selection:bg-fuchsia-300">
           <Main />
           <NextScript />

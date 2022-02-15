@@ -1,12 +1,12 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { format, parseISO } from "date-fns";
-import type { PostFrontMatterType } from "@/types";
-import Container from "./Container";
-import { widontString } from "@/utils/widontString";
-import SubscribeCard from "@/components/SubscribeCard";
-import Tag from "@/components/Tag";
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { format, parseISO } from 'date-fns';
+import type { PostFrontMatterType } from '@/types';
+import Container from './Container';
+import { widontString } from '@/utils/widontString';
+import SubscribeCard from '@/components/SubscribeCard';
+import Tag from '@/components/Tag';
 
 const editUrl = (slug: string) =>
   `https://github.com/miadv/miadv.dev/edit/main/posts/blog/${slug}.mdx`;
@@ -48,9 +48,9 @@ const BlogLayout: React.FC<{
             </div>
             <span className="mt-2 block text-sm font-medium text-gray-500 dark:text-gray-400 xs:ml-auto xs:mt-0">
               <time dateTime={postMeta.publishedAt}>
-                {format(parseISO(postMeta.publishedAt), "MMMM dd, yyyy")}
+                {format(parseISO(postMeta.publishedAt), 'MMMM dd, yyyy')}
               </time>
-              {" • "}
+              {' • '}
               {postMeta.readTime.text}
             </span>
           </div>
@@ -65,7 +65,7 @@ const BlogLayout: React.FC<{
               rel="noopener noreferrer"
               className="transition-all hover:text-indigo-600 dark:hover:text-indigo-500"
             >
-              {"Discuss on Twitter"}
+              {'Discuss on Twitter'}
             </a>
             {` • `}
             <a
@@ -74,7 +74,7 @@ const BlogLayout: React.FC<{
               rel="noopener noreferrer"
               className="transition-all hover:text-indigo-600 dark:hover:text-indigo-500"
             >
-              {"Edit on GitHub"}
+              {'Edit on GitHub'}
             </a>
           </div>
 
@@ -95,7 +95,7 @@ const BlogLayout: React.FC<{
                   {prevBlog && (
                     <>
                       <span className="mb-2 block text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                        {"← "} Previous Article
+                        {'← '} Previous Article
                       </span>
                       <div>
                         <Link href={`/blog/${prevBlog.slug}`}>
@@ -111,7 +111,7 @@ const BlogLayout: React.FC<{
                   {nextBlog && (
                     <div className="md:flex md:flex-col">
                       <span className="mb-2 block text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 md:text-right">
-                        Next Article {" →"}
+                        Next Article {' →'}
                       </span>
                       <div className="ml-auto">
                         <Link href={`/blog/${nextBlog.slug}`}>
