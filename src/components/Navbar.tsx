@@ -1,32 +1,32 @@
-import React, { Fragment, useState, useEffect } from "react";
-import clsx from "clsx";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { Dialog, Transition } from "@headlessui/react";
-import { ThemeToggle } from "./ThemeToggle";
-import GithubIcon from "@/Icons/GithubIcon";
-import Logo from "@/components/Logo";
+import React, { Fragment, useState, useEffect } from 'react';
+import clsx from 'clsx';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Dialog, Transition } from '@headlessui/react';
+import { ThemeToggle } from './ThemeToggle';
+import GithubIcon from '@/Icons/GithubIcon';
+import { CompactLogo, TextLogo } from '@/components/Logo';
 
 const navItems = [
   {
-    title: "Home",
-    path: "/",
+    title: 'Home',
+    path: '/',
   },
   {
-    title: "About",
-    path: "/#about",
+    title: 'About',
+    path: '/#about',
   },
   {
-    title: "Projects",
-    path: "/#projects",
+    title: 'Projects',
+    path: '/#projects',
   },
   {
-    title: "Blog",
-    path: "/blog",
+    title: 'Blog',
+    path: '/blog',
   },
   {
-    title: "Contact",
-    path: "/#contact-me",
+    title: 'Contact',
+    path: '/#contact-me',
   },
 ];
 
@@ -44,9 +44,9 @@ export const Navbar = () => {
       }
     }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener('scroll', onScroll);
     };
   }, [isStiky]);
 
@@ -54,10 +54,10 @@ export const Navbar = () => {
     <div
       id="navbar"
       className={clsx(
-        "fixed inset-x-0 top-0 z-40 h-16 transition-colors duration-300",
-        isStiky || router.asPath !== "/"
-          ? "border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800"
-          : "bg-transparent"
+        'fixed inset-x-0 top-0 z-40 h-16 transition-colors duration-300',
+        isStiky || router.asPath !== '/'
+          ? 'border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800'
+          : 'bg-transparent'
       )}
     >
       <div className="mx-auto max-w-screen-2xl py-4 px-4 md:px-8">
@@ -65,7 +65,10 @@ export const Navbar = () => {
           <Link href="/">
             <a className="flex-none">
               <span className="sr-only">MiadV personal blog</span>
-              <Logo />
+              <span className="flex items-center space-x-2">
+                <CompactLogo className="h-[28px] w-[28px]" />
+                <TextLogo className="h-[22px] w-auto fill-gray-900 dark:fill-gray-50" />
+              </span>
             </a>
           </Link>
 
@@ -77,8 +80,8 @@ export const Navbar = () => {
                     <Link href={item.path}>
                       <a
                         className={clsx(
-                          "peer transition-all duration-150 hover:text-indigo-500",
-                          router.asPath === item.path ? "text-indigo-500" : ""
+                          'peer transition-all duration-150 hover:text-indigo-500',
+                          router.asPath === item.path ? 'text-indigo-500' : ''
                         )}
                       >
                         {item.title}
@@ -86,8 +89,8 @@ export const Navbar = () => {
                     </Link>
                     <span
                       className={clsx(
-                        "absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-500 transition-all duration-150 peer-hover:scale-x-100",
-                        router.asPath === item.path ? "scale-x-100" : ""
+                        'absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-500 transition-all duration-150 peer-hover:scale-x-100',
+                        router.asPath === item.path ? 'scale-x-100' : ''
                       )}
                     />
                   </li>
@@ -148,7 +151,7 @@ const MenuPopOver = ({ display }: { display: string }) => {
       >
         <Dialog
           as="div"
-          className={clsx("fixed inset-0 z-50 ", display)}
+          className={clsx('fixed inset-0 z-50 ', display)}
           onClose={setIsOpen}
         >
           <Transition.Child
@@ -165,7 +168,10 @@ const MenuPopOver = ({ display }: { display: string }) => {
 
           <div className="fixed top-0 bottom-0 left-0 w-full max-w-xs rounded-r-2xl bg-white p-6 shadow-lg dark:bg-gray-800 ">
             <a className="mx-auto mt-4">
-              <Logo />
+              <span className="flex items-center space-x-2">
+                <CompactLogo className="h-[32px] w-[32px]" />
+                <TextLogo className="h-[22px] w-auto fill-gray-900 dark:fill-gray-50" />
+              </span>
             </a>
 
             <ul className="mt-16 space-y-6">
@@ -175,8 +181,8 @@ const MenuPopOver = ({ display }: { display: string }) => {
                     <a
                       onClick={() => setIsOpen(false)}
                       className={clsx(
-                        "peer block text-lg font-semibold transition-all duration-150 hover:text-indigo-500",
-                        router.asPath === item.path ? "text-indigo-500" : ""
+                        'peer block text-lg font-semibold transition-all duration-150 hover:text-indigo-500',
+                        router.asPath === item.path ? 'text-indigo-500' : ''
                       )}
                     >
                       {item.title}
