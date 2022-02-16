@@ -37,9 +37,9 @@ export default class Document extends NextDocument {
             type="image/png"
           />
           <link
-            color="#4F46E5"
-            href="/static/favicons/safari-pinned-tab.svg"
             rel="mask-icon"
+            href="/static/favicons/safari-pinned-tab.svg"
+            color="#6366f1"
           />
           <meta content="#ffffff" name="theme-color" />
           <meta content="#ffffff" name="msapplication-TileColor" />
