@@ -1,10 +1,10 @@
-import React from "react";
-import clsx from "clsx";
-import WebDevIcon from "@/Icons/WebDevIcon";
-import GraphicDesignIcon from "@/Icons/GraphicDesignIcon";
-import ConsultationIcon from "@/Icons/ConsultationIcon";
-import { Button } from "./Button";
-import { Card } from "./Card";
+import React from 'react';
+import clsx from 'clsx';
+import WebDevIcon from '@/Icons/WebDevIcon';
+import GraphicDesignIcon from '@/Icons/GraphicDesignIcon';
+import ConsultationIcon from '@/Icons/ConsultationIcon';
+import { Button } from './Button';
+import { Card } from './Card';
 
 const FloatingItems: React.FC<{
   className?: string;
@@ -13,7 +13,7 @@ const FloatingItems: React.FC<{
   subtitle: string;
 }> = ({ className, Icon, title, subtitle }) => {
   return (
-    <Card className={clsx("px-4 py-6 text-center md:text-left", className)}>
+    <Card className={clsx('px-4 py-6 text-center md:text-left', className)}>
       <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-600 md:mx-0">
         {Icon}
       </span>
@@ -37,10 +37,7 @@ export const AboutMe = () => {
           <span className="mx-auto mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600 lg:mx-0" />
 
           <p className="mt-6 break-words text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in at
-            habitant ultrices ac gravida. Arcu, adipiscing rhoncus a suspendisse
-            maecenas et nibh arcu. Interdum in curabitur ac magna cras. Leo dui
-            nulla fames elementum morbi eget etiam sed magnis.
+            {`I’m a web developer with high enthusiasm for frontend technologies. I have done projects including eCommerce, Static websites, and full-stack Web Apps. I also like doing product photography and creating content for my blog in my spare time.`}
           </p>
           {/* 
           <div className="mt-8">

@@ -1,6 +1,6 @@
-import React from "react";
-import Image from "next/image";
-import { Button } from "./Button";
+import React from 'react';
+import Image from 'next/image';
+import { Button } from './Button';
 
 export const Projects = () => {
   return (
@@ -14,9 +14,7 @@ export const Projects = () => {
           <span className="mx-auto mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600 lg:mx-0" />
 
           <p className="mt-6 break-words text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in at
-            habitant ultrices ac gravida. Arcu, adipiscing rhoncus a suspendisse
-            maecenas et nibh arcu. Interdum in curabitur ac magna cras.
+            {`Most of my web apps are specifically designed based on the employer's needs and are private. But feel free to check out my GitHub profile where I maintain a list of some of my personal/public projects.`}
           </p>
 
           <div className="mt-8">
