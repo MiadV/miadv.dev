@@ -39,7 +39,12 @@ export async function getPostBySlug(postType: PostType, slug: string) {
 
   const { code, frontmatter } = await bundleMDX({
     file: path.join(root, 'posts', postType, file),
-    cwd: root,
+    cwd: path.join(root, 'components'),
+    esbuildOptions(options) {
+      options.minify = false;
+      options.target = ['es2020'];
+      return options;
+    },
     xdmOptions(options) {
       // this is the recommended way to add custom remark/rehype plugins:
       // The syntax might look weird, but it protects you in case we add/remove
