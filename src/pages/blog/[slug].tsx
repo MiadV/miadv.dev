@@ -23,7 +23,7 @@ export default function Blog({
       <SEO
         type="article"
         title={`${frontmatter.title} – Miad Vosoughi`}
-        description={frontmatter.excerpt}
+        description={frontmatter.summary}
         image={frontmatter.image}
         publishTime={new Date(frontmatter.publishedAt).toISOString()}
         modifiedTime={new Date(

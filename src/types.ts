@@ -7,7 +7,7 @@ export type PostFrontMatterType = {
   title: string;
   publishedAt: string;
   modifiedAt?: string;
-  excerpt: string;
+  summary: string;
   tags: string[];
   slug: string;
   image?: string;
