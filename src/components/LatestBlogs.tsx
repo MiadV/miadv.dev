@@ -1,14 +1,14 @@
-import React from "react";
-import Link from "next/link";
-import { format, parseISO } from "date-fns";
-import { Mousewheel, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Card } from "./Card";
-import { Button } from "./Button";
-import ChevronRightIcon from "@/Icons/ChevronRightIcon";
-import FeatherIcon from "@/Icons/FeatherIcon";
-import { widontString } from "@/utils/widontString";
-import type { PostFrontMatterType } from "@/types";
+import React from 'react';
+import Link from 'next/link';
+import { format, parseISO } from 'date-fns';
+import { Mousewheel, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Card } from './Card';
+import { Button } from './Button';
+import ChevronRightIcon from '@/Icons/ChevronRightIcon';
+import FeatherIcon from '@/Icons/FeatherIcon';
+import { widontString } from '@/utils/widontString';
+import type { PostFrontMatterType } from '@/types';
 
 const BlogSliderItem: React.FC<{ blogItem: PostFrontMatterType }> = ({
   blogItem,
@@ -20,15 +20,17 @@ const BlogSliderItem: React.FC<{ blogItem: PostFrontMatterType }> = ({
           <Link href={`/blog/${blogItem.slug!}`}>
             <a>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
-                {widontString(blogItem.title.slice(0, 50) + "...")}
+                {blogItem.title.length < 50
+                  ? widontString(blogItem.title)
+                  : widontString(blogItem.title.slice(0, 50) + '...')}
               </h3>
             </a>
           </Link>
           <span className="text-xs font-medium text-gray-500">
             <time dateTime={blogItem.publishedAt}>
-              {format(parseISO(blogItem.publishedAt), "MMMM dd, yyyy")}
+              {format(parseISO(blogItem.publishedAt), 'MMMM dd, yyyy')}
             </time>
-            {" • "}
+            {' • '}
             {blogItem.readTime.text}
           </span>
         </div>
@@ -65,8 +67,8 @@ export const LatestBlogs: React.FC<{
           modules={[Mousewheel, Pagination]}
           pagination={{
             clickable: true,
-            bulletClass: "swiper-pagination-item",
-            bulletActiveClass: "swiper-pagination-item-active",
+            bulletClass: 'swiper-pagination-item',
+            bulletActiveClass: 'swiper-pagination-item-active',
           }}
           spaceBetween={46}
           slidesPerView={1}
