@@ -37,7 +37,7 @@ export async function getPostBySlug(postType: PostType, slug: string) {
     );
   }
 
-  const { code, frontmatter } = await bundleMDX({
+  const { code } = await bundleMDX({
     file: path.join(root, 'posts', postType, file),
     cwd: path.join(root, 'components'),
     esbuildOptions(options) {
@@ -68,7 +68,11 @@ export async function getPostBySlug(postType: PostType, slug: string) {
     },
   });
 
-  const readTime = readingTime(code);
+  const { data: frontmatter, content } = matter.read(
+    path.join(root, 'posts', postType, file)
+  );
+
+  const readTime = readingTime(content);
   return {
     mdxSource: code,
     frontmatter: {
