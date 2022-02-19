@@ -20,7 +20,7 @@ const defaultMeta = {
   title: 'Miad Vosoughi – Personal blog & portfolio',
   description: 'Web Developer, Front-end Developer, React.js Enthusiast',
   type: 'website',
-  image: '/static/images/banner.png', //TODO Recommended dimension: 1200 x 630
+  image: '/static/images/banner.png',
 };
 
 const SEO: React.FC<SEOProps> = ({ children, ...customMeta }) => {
