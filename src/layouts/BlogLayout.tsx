@@ -34,7 +34,7 @@ const BlogLayout: React.FC<{
                 alt="Miad Vosoughi Nia"
                 height={25}
                 width={25}
-                src="/avatar.jpg"
+                src="/static/images/miad-vosoughi.jpg"
                 className="overflow-hidden rounded-full bg-gray-400"
               />
               <div className="ml-2">
