@@ -26,12 +26,13 @@ const Hero: React.FC = () => {
             </span>
           </h1>
 
-          <Card className="mt-8 h-[260px] w-[330px] text-center md:mt-0 md:w-[350px] lg:w-[400px]">
+          <Card className="mt-8 h-[270px] w-[330px] text-center md:mt-0 md:w-[350px] lg:w-[400px]">
             <Image
-              src="/me.png"
+              src="/static/images/miad-vosoughi.jpg"
               alt="Miad Vosoughi - MiadV"
-              width={110}
-              height={110}
+              priority
+              width={120}
+              height={120}
               className="block overflow-hidden rounded-full bg-gray-200"
             />
             <span className="mt-2 block text-lg font-semibold text-gray-900 dark:text-gray-50">
