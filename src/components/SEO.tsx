@@ -28,6 +28,7 @@ const SEO: React.FC<SEOProps> = ({ children, ...customMeta }) => {
   const meta = {
     ...defaultMeta,
     ...customMeta,
+    image: customMeta.image ?? defaultMeta.image,
   };
   return (
     <Head>
