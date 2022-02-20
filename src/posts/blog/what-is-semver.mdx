@@ -1,0 +1,55 @@
+---
+draft: false
+title: "What's Semantic Versioning?"
+publishedAt: '2022-02-20'
+modifiedAt: '2022-02-20'
+summary: 'A sneak peek into Semantic Versioning.'
+image: '/static/images/what-is-semver/banner.png'
+tags: ['semver', 'software-versioning', 'semantic-version']
+---
+
+<Image
+  alt={`Git commit messages`}
+  src={`/static/images/what-is-semver/banner.png`}
+  width={1175}
+  height={505}
+  priority
+/>
+
+## What's Semantic Versioning?
+
+Semantic versioning (AKA [SemVer](https://semver.org/)) is a popular versioning scheme.
+It consist of 3-component **number** in the format of **Major.Minor.Patch**
+
+**Major:** should be increased when we interduce **backward-incompatible** API changes
+_(once we increase this number we must reset Minor and Patch number to 0)_
+
+```
+sample-package@1.5.3 => becomes: 2.0.0
+```
+
+**Minor:** should be increased when new changes are **backward-compatible** i.e. None-Breaking change.
+_(once we increase this number we must reset Patch number to 0)_
+
+```
+sample-package@1.5.3 => becomes: 1.6.0
+```
+
+**Patch:** should be increased when there is a backward compatible bug fix.
+
+```
+sample-package@1.5.3 => becomes: 1.5.4
+```
+
+Keep in mind that when using semantic versioning, versions start from 0.1.0 and not 0.0.1 as no bug fixes have taken place and we usually start with a set of features.
+1.0.0 is considered the first stable version and versions before that are related to the development phase.
+
+> To learn more about SemVer you may refer to https://semver.org/
+
+## Other Versioning Schemes
+
+SemVer is not the only versioning scheme. but it is popular choice amount open source projects.
+below is a list of some other schemes you can check.
+
+1. [Python Versioning Scheme](https://www.python.org/dev/peps/pep-0440/)
+2. [Spring Project Version Naming](https://www.baeldung.com/spring-projects-version-naming)
