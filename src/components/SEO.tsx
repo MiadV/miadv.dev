@@ -17,8 +17,8 @@ type SEOProps = {
 
 const baseUrl = 'https://miadv.dev';
 const defaultMeta = {
-  title: 'Miad Vosoughi – Personal blog & portfolio',
-  description: 'Web Developer, Front-end Developer, React.js Enthusiast',
+  title: 'Miad Vosoughi – Web Developer, Front End Developer',
+  description: 'Web Developer, Front-end Developer, JavaScript Enthusiast',
   type: 'website',
   image: '/static/images/banner.png',
 };
