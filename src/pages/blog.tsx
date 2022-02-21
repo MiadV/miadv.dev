@@ -15,7 +15,7 @@ export default function Blog({
   const [searchValue, setSearchValue] = useState('');
 
   const filteredBlogPosts = allBlogsSorted.filter((blog) => {
-    const searchContent = blog.title + blog.excerpt + blog.tags.join(' ');
+    const searchContent = blog.title + blog.summary + blog.tags.join(' ');
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());
   });
 
