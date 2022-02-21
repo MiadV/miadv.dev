@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
         >
           <h1>
             <span className="mb-4 inline-block text-4xl font-bold text-gray-900 dark:text-gray-50 md:text-5xl">
-              Hi, I am <span className="text-indigo-600">Miad</span>
+              Hi, I'm <span className="text-indigo-600">Miad</span>
             </span>
             <span className="text-3xl font-semibold leading-tight text-gray-900 dark:text-gray-50 md:text-4xl">
               <br /> I help SMEs improve <br /> their business
