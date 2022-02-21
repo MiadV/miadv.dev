@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
-import { Card } from "./Card";
-import { Button } from "./Button";
-import Input from "./Input";
-import LoadingSpinnerIcon from "@/Icons/LoadingSpinnerIcon";
+import React, { useRef, useState } from 'react';
+import { Card } from './Card';
+import { Button } from './Button';
+import Input from './Input';
+import LoadingSpinnerIcon from '@/Icons/LoadingSpinnerIcon';
 
 export enum Form {
   Initial,
@@ -26,14 +26,14 @@ const SubscribeCard = () => {
     e.preventDefault();
     setFormState({ state: Form.Loading });
     try {
-      const res = await fetch("/api/subscribe", {
+      const res = await fetch('/api/subscribe', {
         body: JSON.stringify({
           email: emailInputRef.current?.value,
         }),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        method: "POST",
+        method: 'POST',
       });
 
       const { error } = await res.json();
@@ -47,7 +47,7 @@ const SubscribeCard = () => {
       }
 
       if (emailInputRef.current) {
-        emailInputRef.current.value = "";
+        emailInputRef.current.value = '';
       }
       setFormState({
         state: Form.Success,
@@ -56,7 +56,7 @@ const SubscribeCard = () => {
     } catch (err) {
       setFormState({
         state: Form.Error,
-        message: "Something went wrong!",
+        message: 'Something went wrong!',
       });
       return;
     }

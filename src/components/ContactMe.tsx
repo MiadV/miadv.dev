@@ -1,26 +1,26 @@
-import React from "react";
-import { IconButton } from "./Button";
-import { Card } from "./Card";
-import EmailIcon from "@/Icons/EmailIcon";
-import InstagramIcon from "@/Icons/InstagramIcon";
-import LinkedinIcon from "@/Icons/LinkedinIcon";
-import PaperPlaneIcon from "@/Icons/PaperPlaneIcon";
+import React from 'react';
+import { IconButton } from './Button';
+import { Card } from './Card';
+import EmailIcon from '@/Icons/EmailIcon';
+import InstagramIcon from '@/Icons/InstagramIcon';
+import LinkedinIcon from '@/Icons/LinkedinIcon';
+import PaperPlaneIcon from '@/Icons/PaperPlaneIcon';
 
 const socialLinks = [
   {
-    lable: "email address",
+    lable: 'email address',
     Icon: <EmailIcon />,
-    href: "mailto:miadv.biz@gmail.com",
+    href: 'mailto:miadv.biz@gmail.com',
   },
   {
-    lable: "linkedin profile",
+    lable: 'linkedin profile',
     Icon: <LinkedinIcon />,
-    href: "https://www.linkedin.com/in/miad-vosoughi/",
+    href: 'https://www.linkedin.com/in/miad-vosoughi/',
   },
   {
-    lable: "instagram",
+    lable: 'instagram',
     Icon: <InstagramIcon />,
-    href: "https://www.instagram.com/miadv.dev/",
+    href: 'https://www.instagram.com/miadv.dev/',
   },
 ];
 

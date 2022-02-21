@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function useTypingText(text: string, speed = 150, delay = 2000) {
   const firstRender = useRef(true);
   const [index, setIndex] = useState(0);
-  const [typingText, setTypingText] = useState("");
+  const [typingText, setTypingText] = useState('');
 
   useEffect(() => {
     let tDelay: NodeJS.Timer;

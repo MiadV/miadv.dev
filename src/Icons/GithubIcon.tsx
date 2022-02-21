@@ -1,5 +1,5 @@
-import React from "react";
-import clsx from "clsx";
+import React from 'react';
+import clsx from 'clsx';
 
 function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
   const { height = 24, width = 24, className, ...otherProps } = props;
@@ -9,7 +9,7 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       height={height}
       width={width}
-      className={clsx("fill-inherit", className)}
+      className={clsx('fill-inherit', className)}
       {...otherProps}
     >
       <path

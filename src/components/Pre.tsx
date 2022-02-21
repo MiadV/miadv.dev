@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { EditorLayout } from "./EditorLayout";
+import React, { useState, useRef } from 'react';
+import { EditorLayout } from './EditorLayout';
 
 const Pre: React.FC<{ filename?: string }> = (props) => {
   const textInput = useRef<HTMLDivElement>(null);
@@ -7,7 +7,7 @@ const Pre: React.FC<{ filename?: string }> = (props) => {
 
   const onCopy = () => {
     setCopied(true);
-    let content = textInput.current!.textContent || "";
+    let content = textInput.current!.textContent || '';
     navigator.clipboard.writeText(content);
     setTimeout(() => {
       setCopied(false);

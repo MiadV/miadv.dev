@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import Container from "@/layouts/Container";
-import { Button } from "@/components/Button";
+import React from 'react';
+import Link from 'next/link';
+import Container from '@/layouts/Container';
+import { Button } from '@/components/Button';
 
 export default function NotFound() {
   return (

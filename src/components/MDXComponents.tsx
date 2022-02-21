@@ -1,11 +1,11 @@
-import React from "react";
-import Image, { ImageProps } from "next/image";
-import Link from "next/link";
-import Pre from "./Pre";
+import React from 'react';
+import Image, { ImageProps } from 'next/image';
+import Link from 'next/link';
+import Pre from './Pre';
 
 const CustomLink: React.FC<{ href: string }> = (props) => {
   const href = props.href;
-  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {
     return (

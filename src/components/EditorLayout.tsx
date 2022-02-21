@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const CopyButton: React.FC<{ copied: boolean; onCopy: () => void }> = ({
   copied,
@@ -10,8 +10,8 @@ const CopyButton: React.FC<{ copied: boolean; onCopy: () => void }> = ({
       type="button"
       className={
         copied
-          ? "border-green-400 focus:border-green-400 focus:outline-none"
-          : "border-gray-300"
+          ? 'border-green-400 focus:border-green-400 focus:outline-none'
+          : 'border-gray-300'
       }
       onClick={onCopy}
     >
@@ -19,7 +19,7 @@ const CopyButton: React.FC<{ copied: boolean; onCopy: () => void }> = ({
         viewBox="0 0 24 24"
         stroke="currentColor"
         fill="none"
-        className={`h-6 w-6 ${copied ? "stroke-green-400" : "stroke-gray-500"}`}
+        className={`h-6 w-6 ${copied ? 'stroke-green-400' : 'stroke-gray-500'}`}
       >
         {copied ? (
           <>

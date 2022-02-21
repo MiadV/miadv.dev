@@ -1,5 +1,5 @@
-import React from "react";
-import { __DEV__ } from "@/utils/assertions";
+import React from 'react';
+import { __DEV__ } from '@/utils/assertions';
 
 const Tag: React.FC<React.HTMLProps<HTMLSpanElement>> = ({
   children,
@@ -18,5 +18,5 @@ const Tag: React.FC<React.HTMLProps<HTMLSpanElement>> = ({
 
 export default Tag;
 if (__DEV__) {
-  Tag.displayName = "Tag";
+  Tag.displayName = 'Tag';
 }

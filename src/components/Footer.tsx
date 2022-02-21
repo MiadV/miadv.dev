@@ -1,35 +1,35 @@
-import React from "react";
-import EmailIcon from "@/Icons/EmailIcon";
-import InstagramIcon from "@/Icons/InstagramIcon";
-import LinkedinIcon from "@/Icons/LinkedinIcon";
-import YoutubeIcon from "@/Icons/YoutubeIcon";
-import TwitterIcon from "@/Icons/TwitterIcon";
+import React from 'react';
+import EmailIcon from '@/Icons/EmailIcon';
+import InstagramIcon from '@/Icons/InstagramIcon';
+import LinkedinIcon from '@/Icons/LinkedinIcon';
+import YoutubeIcon from '@/Icons/YoutubeIcon';
+import TwitterIcon from '@/Icons/TwitterIcon';
 
 const socialLinks = [
   {
-    lable: "twitter profile",
+    lable: 'twitter profile',
     Icon: <TwitterIcon />,
-    href: "https://twitter.com/Miad_Vosoughi",
+    href: 'https://twitter.com/Miad_Vosoughi',
   },
   {
-    lable: "email address",
+    lable: 'email address',
     Icon: <EmailIcon />,
-    href: "mailto:miadv.biz@gmail.com",
+    href: 'mailto:miadv.biz@gmail.com',
   },
   {
-    lable: "linkedin profile",
+    lable: 'linkedin profile',
     Icon: <LinkedinIcon />,
-    href: "https://www.linkedin.com/in/miad-vosoughi/",
+    href: 'https://www.linkedin.com/in/miad-vosoughi/',
   },
   {
-    lable: "instagram",
+    lable: 'instagram',
     Icon: <InstagramIcon />,
-    href: "https://www.instagram.com/miadv.dev/",
+    href: 'https://www.instagram.com/miadv.dev/',
   },
   {
-    lable: "youtube",
+    lable: 'youtube',
     Icon: <YoutubeIcon />,
-    href: "https://www.youtube.com/c/MiadVosoughi/",
+    href: 'https://www.youtube.com/c/MiadVosoughi/',
   },
 ];
 

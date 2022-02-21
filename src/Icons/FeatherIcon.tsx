@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function FeatherIcon(props: React.SVGProps<SVGSVGElement>) {
   const { height = 50, width = 50, className, ...otherProps } = props;

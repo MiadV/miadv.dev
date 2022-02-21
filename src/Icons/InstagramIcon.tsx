@@ -1,5 +1,5 @@
-import React from "react";
-import clsx from "clsx";
+import React from 'react';
+import clsx from 'clsx';
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   const { height = 24, width = 24, className, ...otherProps } = props;
@@ -9,7 +9,7 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       height={height}
       width={width}
-      className={clsx("fill-inherit", className)}
+      className={clsx('fill-inherit', className)}
       {...otherProps}
     >
       <path d="M11.999 7.377a4.623 4.623 0 1 0 0 9.248 4.623 4.623 0 0 0 0-9.248zm0 7.627a3.004 3.004 0 1 1 0-6.008 3.004 3.004 0 0 1 0 6.008z"></path>

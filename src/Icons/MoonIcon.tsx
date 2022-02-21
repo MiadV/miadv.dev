@@ -1,8 +1,8 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 export const transition = {
-  type: "spring",
+  type: 'spring',
   stiffness: 200,
   damping: 10,
 };

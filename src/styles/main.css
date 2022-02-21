@@ -1,9 +1,9 @@
 @tailwind base;
-@import "fonts.css";
+@import 'fonts.css';
 
 /*! purgecss start ignore */
-@import "prism.css";
-@import "rehype-prism-plus.css";
+@import 'prism.css';
+@import 'rehype-prism-plus.css';
 /*! purgecss end ignore */
 
 @tailwind components;
@@ -32,17 +32,17 @@
   height: 8px;
   width: 10px;
   border-radius: 20px;
-  background-color: theme("colors.indigo.200");
+  background-color: theme('colors.indigo.200');
   margin-right: 4px;
   margin-left: 4px;
 }
 .swiper-pagination-item-active {
   width: 20px;
-  background-color: theme("colors.indigo.700");
+  background-color: theme('colors.indigo.700');
 }
 
 html.dark .swiper-button-next {
-  background-color: theme("colors.slate.600");
+  background-color: theme('colors.slate.600');
 }
 
 /* end of styling Swiper  */
@@ -66,7 +66,7 @@ html.dark .swiper-button-next {
 
 .prose .anchor:after {
   @apply text-gray-500;
-  content: "#";
+  content: '#';
 }
 
 .prose *:hover > .anchor {

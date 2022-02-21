@@ -1,8 +1,8 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 export const transition = {
-  type: "spring",
+  type: 'spring',
   stiffness: 200,
   damping: 10,
 };
@@ -33,7 +33,7 @@ export const SunIcon: React.FC<{ className?: string }> = ({ className }) => {
       xmlns="http://www.w3.org/2000/svg"
       whileTap={whileTap}
       // Centers the rotation anchor point vertically & horizontally
-      style={{ originX: "50%", originY: "50%" }}
+      style={{ originX: '50%', originY: '50%' }}
       className={`h-6 w-6 ${className}`}
     >
       <motion.circle

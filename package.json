@@ -1,6 +1,7 @@
 {
   "name": "miadv.dev",
   "private": true,
+  "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,7 +9,8 @@
     "generate:rss": "node ./scripts/generate-rss.mjs",
     "generate:sitemap": "node ./scripts/generate-sitemap.mjs",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write src/**/*.{css,scss,ts,tsx}"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
