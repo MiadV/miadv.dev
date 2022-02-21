@@ -54,9 +54,9 @@ export default class Document extends NextDocument {
           />
 
           {/* TODO integrate analytics & google verifications */}
-          {/* <meta content="14d2e73487fa6c71" name="yandex-verification" />
+          {/* <meta content="???" name="yandex-verification" />
           <meta
-            content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
+            content="???"
             name="google-site-verification"
           /> */}
         </Head>
