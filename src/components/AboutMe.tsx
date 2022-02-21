@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import WebDevIcon from '@/Icons/WebDevIcon';
 import GraphicDesignIcon from '@/Icons/GraphicDesignIcon';
 import ConsultationIcon from '@/Icons/ConsultationIcon';
-import { Button } from './Button';
+// import { Button } from './Button';
 import { Card } from './Card';
 
 const FloatingItems: React.FC<{
