@@ -14,23 +14,53 @@ export default class Document extends NextDocument {
 
   render() {
     return (
-      <Html lang="en" className="dark">
+      <Html lang="en" className="scroll-pt-[2rem] scroll-smooth">
         <Head>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                  try {
-                    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                      document.documentElement.classList.add('dark')
-                    } else {
-                      document.documentElement.classList.remove('dark')
-                    }
-                  } catch (_) {}
-                `,
-            }}
+          <link href="/static/favicons/site.webmanifest" rel="manifest" />
+          <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
+          <link
+            href="/static/favicons/apple-touch-icon.png"
+            rel="apple-touch-icon"
+            sizes="180x180"
           />
+          <link
+            href="/static/favicons/favicon-32x32.png"
+            rel="icon"
+            sizes="32x32"
+            type="image/png"
+          />
+          <link
+            href="/static/favicons/favicon-16x16.png"
+            rel="icon"
+            sizes="16x16"
+            type="image/png"
+          />
+          <link
+            rel="mask-icon"
+            href="/static/favicons/safari-pinned-tab.svg"
+            color="#6366f1"
+          />
+          <meta content="#ffffff" name="theme-color" />
+          <meta content="#ffffff" name="msapplication-TileColor" />
+          <meta
+            content="/static/favicons/browserconfig.xml"
+            name="msapplication-config"
+          />
+
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            href="/feeds/feed.xml"
+          />
+
+          {/* TODO integrate analytics & google verifications */}
+          {/* <meta content="???" name="yandex-verification" />
+          <meta
+            content="???"
+            name="google-site-verification"
+          /> */}
         </Head>
-        <body className="antialiased bg-neutral-100 dark:bg-gray-800 text-slate-900 dark:text-white dark:highlight-white/5">
+        <body className="relative bg-gray-50 text-gray-600 antialiased selection:bg-fuchsia-200 selection:text-gray-900 dark:bg-gray-900  dark:text-gray-400 dark:selection:bg-fuchsia-300">
           <Main />
           <NextScript />
         </body>

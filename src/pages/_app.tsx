@@ -1,31 +1,30 @@
-import '@/css/fonts.css';
-import '@/css/main.css';
-import { Fragment } from 'react';
+// Import 3rd party styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+//
+import '@/styles/main.css';
+import React from 'react';
+import { ThemeProvider } from 'next-themes';
+import ProgressBar from '@badrap/bar-of-progress';
 import type { AppProps } from 'next/app';
-import { Navbar } from '@/components/Navbar';
-import { LayoutProps } from '@/types';
-import { TitleMeta } from '@/components/TitleMeta';
+import { Router } from 'next/router';
 
-function MyApp({
-  Component,
-  pageProps,
-}: AppProps<{ layoutProps: LayoutProps }>) {
-  const layoutProps = Component.defaultProps?.layoutProps;
-  const Layout = (layoutProps && layoutProps.Layout) || Fragment;
+const progress = new ProgressBar({
+  size: 2,
+  color: '#D946EF', //fuchsia-500
+  className: 'bar-of-progress',
+  delay: 100,
+});
 
-  const layoutPropsObj =
-    layoutProps && layoutProps.Layout ? { layoutProps: layoutProps } : {};
+Router.events.on('routeChangeStart', () => progress.start());
+Router.events.on('routeChangeComplete', () => progress.finish());
+Router.events.on('routeChangeError', () => progress.finish());
 
-  const meta = layoutProps && layoutProps.meta;
-
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <TitleMeta suffix="Miad Vosoughi">{meta?.title}</TitleMeta>
-      <Navbar />
-      <Layout {...layoutPropsObj}>
-        <Component {...pageProps} />
-      </Layout>
-    </>
+    <ThemeProvider attribute="class">
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }
 
