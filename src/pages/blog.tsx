@@ -28,7 +28,7 @@ export default function Blog({
     <>
       <SEO
         title="Blog – Miad Vosoughi"
-        description="Some of public projects and articles about web development, front-end engineering, react-js."
+        description="My Personal Blogs, Snippets, Articles about web development, front-end, javscript, react-js."
       />
       <Container>
         <div className="mx-auto w-full max-w-screen-sm">
@@ -38,7 +38,7 @@ export default function Blog({
                 Blog
               </h1>
               <p className="mb-4 text-lg">
-                {widontString('My Personal Blog | Projects, Articles...')}
+                {widontString('My Personal Blogs, Snippets, Articles...')}
               </p>
             </div>
             <Input
