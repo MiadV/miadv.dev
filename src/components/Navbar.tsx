@@ -18,7 +18,7 @@ const navItems = [
   },
   {
     title: 'Projects',
-    path: '/#projects',
+    path: '/projects',
   },
   {
     title: 'Blog',
