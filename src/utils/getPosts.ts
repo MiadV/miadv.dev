@@ -13,7 +13,7 @@ import type { PostFrontMatterType, PostType } from '@/types';
 const root = path.join(process.cwd(), '/src');
 
 export async function getPostBySlug(postType: PostType, slug: string) {
-  const pathPrefix = path.join(root, 'posts', postType);
+  const pathPrefix = path.join(root, 'data', postType);
   const files = fs.readdirSync(pathPrefix);
   const file = files.find((f) => f.replace(/\.mdx$/, '') === slug);
 
@@ -38,7 +38,7 @@ export async function getPostBySlug(postType: PostType, slug: string) {
   }
 
   const { code } = await bundleMDX({
-    file: path.join(root, 'posts', postType, file),
+    file: path.join(root, 'data', postType, file),
     cwd: path.join(root, 'components'),
     esbuildOptions(options) {
       options.minify = false;
@@ -69,7 +69,7 @@ export async function getPostBySlug(postType: PostType, slug: string) {
   });
 
   const { data: frontmatter, content } = matter.read(
-    path.join(root, 'posts', postType, file)
+    path.join(root, 'data', postType, file)
   );
 
   const readTime = readingTime(content);
@@ -89,7 +89,7 @@ export async function getPostBySlug(postType: PostType, slug: string) {
 export async function getAllPostsFrontmatter(
   postType: PostType
 ): Promise<PostFrontMatterType[]> {
-  const pathPrefix = path.join(root, 'posts', postType);
+  const pathPrefix = path.join(root, 'data', postType);
   const files = fs.readdirSync(pathPrefix);
 
   let allFrontMatter: any = [];
