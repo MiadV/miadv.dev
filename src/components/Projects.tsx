@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button } from './Button';
+import Link from 'next/link';
 
 export const Projects = () => {
   return (
@@ -14,13 +15,19 @@ export const Projects = () => {
           <span className="mx-auto mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600 lg:mx-0" />
 
           <p className="mt-6 break-words text-lg">
-            {`Most of my web apps are specifically designed based on the employer's needs and are private. But feel free to check out my GitHub profile where I maintain a list of some of my personal/public projects.`}
+            {`Most of my web apps are specifically designed based on the employer's needs and are private. But feel free to check out the`}{' '}
+            <Link href={`/projects/#top`}>
+              <a className="font-semibold text-indigo-600 dark:text-indigo-400">
+                projects
+              </a>
+            </Link>{' '}
+            {`page where I maintain a list of some of my personal/public projects.`}
           </p>
 
           <div className="mt-8">
-            <Button as="a" href="https://github.com/miadv" isExternal>
-              View on Github
-            </Button>
+            <Link href={`/projects/#top`} passHref>
+              <Button as="a">View Projects</Button>
+            </Link>
           </div>
         </div>
         <div className="relative mx-auto mt-16 grid max-w-xl grid-cols-2 gap-6 md:gap-8 lg:order-1">
