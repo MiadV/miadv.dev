@@ -4,6 +4,11 @@
 
 My Portfolio/Blog built using [React.js](https://reactjs.org/), [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Typescript](https://www.typescriptlang.org/).
 
+[**👉View Live**](https://miadv.dev)
+<br />
+
+![MiadV.dev](./preview.png)
+
 ### Folder Structure
 
 Project directories are structured as follows:
@@ -15,6 +20,8 @@ root
         ├── /static
             ├── /favicons
             ├── /images
+                ├── /blogs
+                ├── /projects
         ├── robots.txt
     ├── /scripts
     ├── /src
@@ -25,8 +32,9 @@ root
         ├── /styles
         ├── /utils
         ├── types.ts
-        ├── /posts
-            ├── /blogs
+        ├── /data
+            ├── /blog
+            ├── projects.js
 package.json
 tsconfig.json
 next.config.js
@@ -52,7 +60,7 @@ Open http://localhost:3000 in your browser to see the result.
 ### New Blog
 
 Bootstrap new blog frontmatter the template provided.
-**New blog should be inside `/posts/blog` directory.**
+**New blog should be inside `/data/blog` directory.**
 
 ```
 ---
@@ -61,14 +69,33 @@ title: 'I am a new article'
 publishedAt: '2022-01-01'
 modifiedAt: '2022-01-01'
 summary: "I'm the summary of the article."
-image: '/static/images/new-article/banner.png' // optional
+image: '/static/images/blogs/new-article/banner.png' // optional
 tags: ['tag-1', 'tag-2] // or empty array []
 ---
 ```
 
 - File name will be used as post slug i.e. `new-article.mdx`.
-- If you are using apostrophe (') the sentence should be wrapped by double quotes (" ").
-- Each post can have an optional banner located at `/public/static/images/{post-slug}/banner.png`.
+- If you are using apostrophe ('), the sentence should be wrapped by double quotes (" ").
+- Each post can have an optional banner located at `/public/static/images/blogs/{post-slug}/banner.png`.
+
+### New Project
+
+**New projects should be defined inside `/data/projects.js` file.**
+
+```javascript
+module.exports = [
+  {...Other Projects},
+  {
+    id: 1, // remember to update the id
+    title: 'Title ...',
+    tags: ['reactjs', 'nextjs', 'typescript'],
+    thumbnail: '/static/images/projects/...',
+    github: 'https://github.com/MiadV/...', // optional
+    youtube: 'https://youtu.be/...', // optional
+    live: 'https://test.com', // optional
+  },
+];
+```
 
 ### Cloning / Forking
 
