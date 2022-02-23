@@ -8,7 +8,7 @@ const baseUrl = 'https://miadv.dev';
 const blogUrl = `${baseUrl}/blog`;
 
 async function getAllPostsFrontmatter(postType) {
-  const pathPrefix = path.join(root, 'posts', postType);
+  const pathPrefix = path.join(root, 'data', postType);
   const files = fs.readdirSync(pathPrefix);
 
   let allFrontMatter = [];
