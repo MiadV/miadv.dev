@@ -3,32 +3,12 @@ import Image from 'next/image';
 import { widontString } from '@/utils/widontString';
 import SEO from '@/components/SEO';
 import Container from '@/layouts/Container';
+import { Button } from '@/components/Button';
 import Tag from '@/components/Tag';
 import GithubIcon from '@/Icons/GithubIcon';
 import YoutubeIcon from '@/Icons/YoutubeIcon';
 import ExternalLinkIcon from '@/Icons/ExternalLinkIcon';
-
-const mockProjects = [
-  {
-    id: 1,
-    title: 'Ecommerce Fashion Products Carousel With SwiperJs',
-    tags: ['reactjs', 'nextjs', 'typescript'],
-    thumbnail:
-      '/static/images/projects/ecommerce-fashion-products-carousel/thumbnail.png',
-    github: 'https://github.com/MiadV/ecommerce-fashion-products-carousel',
-    youtube: 'https://youtube.com',
-    live: 'https://test.com',
-  },
-  {
-    id: 2,
-    title: 'Ecommerce Fashion Products Carousel With SwiperJs',
-    tags: ['reactjs', 'nextjs', 'typescript'],
-    thumbnail:
-      '/static/images/projects/ecommerce-fashion-products-carousel2/thumbnail.png',
-    github: 'https://github.com/MiadV/ecommerce-fashion-products-carousel',
-    live: 'https://test.com',
-  },
-];
+import projectsList from '@/data/projects';
 
 export default function Projects() {
   return (
@@ -40,18 +20,31 @@ export default function Projects() {
 
       <Container>
         <div className="mx-auto w-full max-w-screen-sm">
-          <div className="pb-8 sm:text-center">
-            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
+          <div className="space-y-4 pb-8 sm:text-center">
+            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
               Projects
             </h1>
-            <p className="mb-4 text-lg">
+            <p className="text-lg">
               {widontString('Some of my public / personal projects.')}
+              <span className="block text-sm text-gray-400">
+                you may check out github for a more up to date list
+              </span>
             </p>
+            <div>
+              <Button
+                as="a"
+                isExternal
+                href="https://github.com/miadv"
+                variant="outline"
+              >
+                View on Github
+              </Button>
+            </div>
           </div>
           <ul className="space-y-8">
-            {mockProjects.map((project) => (
+            {projectsList.map((project) => (
               <li key={project.id}>
-                <article className="group flex flex-col overflow-hidden rounded-2xl bg-gray-200 shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:saturate-100 dark:bg-gray-500">
+                <article className="group flex flex-col overflow-hidden rounded-2xl border-slate-200 bg-gray-200 shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:saturate-100 dark:border-slate-700 dark:bg-gray-500">
                   <Image
                     src={project.thumbnail}
                     alt="project screenshot"
@@ -63,6 +56,7 @@ export default function Projects() {
                     <div className="flex space-x-2">
                       {project.youtube && (
                         <a
+                          title="watch on youtube"
                           href={project.youtube}
                           rel="noopener noreferrer"
                           target="_blank"
@@ -74,6 +68,7 @@ export default function Projects() {
                       )}
                       {project.github && (
                         <a
+                          title="view on github"
                           href={project.github}
                           rel="noopener noreferrer"
                           target="_blank"
@@ -86,6 +81,7 @@ export default function Projects() {
 
                       {project.live && (
                         <a
+                          title="live website"
                           href={project.live}
                           rel="noopener noreferrer"
                           target="_blank"
@@ -96,16 +92,20 @@ export default function Projects() {
                         </a>
                       )}
                     </div>
-                    <h3
-                      className="text-sm font-semibold text-gray-900 dark:text-gray-50 md:text-base"
-                      title={project.title}
-                    >
-                      {project.title}
-                    </h3>
+                    <a className="inline-block" href={project.github}>
+                      <h3
+                        className="text-sm font-semibold text-gray-900 dark:text-gray-50 md:text-base"
+                        title={project.title}
+                      >
+                        {project.title}
+                      </h3>
+                    </a>
 
                     <div className="space-x-1">
                       {project.tags.map((tag) => (
-                        <Tag key={tag}>{tag}</Tag>
+                        <Tag key={tag} size="sm">
+                          {tag}
+                        </Tag>
                       ))}
                     </div>
                   </footer>
