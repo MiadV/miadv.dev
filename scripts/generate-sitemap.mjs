@@ -9,8 +9,8 @@ async function generate() {
   const pages = await globby([
     'src/pages/*.tsx',
     'src/pages/*.jsx',
-    'src/posts/**/*.mdx',
-    '!src/posts/*.mdx',
+    'src/data/**/*.mdx',
+    '!src/data/*.mdx',
     '!src/pages/_*.tsx',
     '!src/pages/api',
     '!src/pages/404.tsx',
@@ -24,7 +24,7 @@ async function generate() {
             const path = page
               .replace('src/', '')
               .replace('pages', '')
-              .replace('posts', '')
+              .replace('data', '')
               .replace('.tsx', '')
               .replace('.jsx', '')
               .replace('.mdx', '');
