@@ -18,11 +18,11 @@ const navItems = [
   },
   {
     title: 'Projects',
-    path: '/projects',
+    path: '/projects/#top',
   },
   {
     title: 'Blog',
-    path: '/blog',
+    path: '/blog/#top',
   },
   {
     title: 'Contact',
