@@ -24,7 +24,7 @@ export const Projects = () => {
           </div>
         </div>
         <div className="relative mx-auto mt-16 grid max-w-xl grid-cols-2 gap-6 md:gap-8 lg:order-1">
-          <div className="row-span-2 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:saturate-100">
+          <div className="row-span-2 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:saturate-100">
             <Image
               src="/static/images/p-1.jpg"
               alt="project screenshot"
@@ -34,7 +34,7 @@ export const Projects = () => {
               className="transition-all duration-300 hover:scale-[1.02]"
             />
           </div>
-          <div className="row-span-1 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:saturate-100">
+          <div className="row-span-1 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:saturate-100">
             <Image
               src="/static/images/p-2.jpg"
               alt="project screenshot"
@@ -44,7 +44,7 @@ export const Projects = () => {
               className="transition-all duration-300 hover:scale-[1.02]"
             />
           </div>
-          <div className="row-span-2 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:saturate-100">
+          <div className="row-span-2 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:saturate-100">
             <Image
               src="/static/images/p-3.jpg"
               alt="project screenshot"
@@ -54,7 +54,7 @@ export const Projects = () => {
               className="transition-all duration-300 hover:scale-[1.02]"
             />
           </div>
-          <div className="row-span-1 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:saturate-100">
+          <div className="row-span-1 flex overflow-hidden rounded-2xl bg-gray-200 shadow-xl saturate-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:saturate-100">
             <Image
               src="/static/images/p-4.jpg"
               alt="project screenshot"
