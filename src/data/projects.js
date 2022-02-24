@@ -16,6 +16,7 @@ module.exports = [
     thumbnail:
       '/static/images/projects/responsive-job-seeking-landing-page.png',
     github: 'https://github.com/MiadV/hiredli-tw',
+    live: 'https://hiredli-tw-miadv.vercel.app/',
   },
   {
     id: 2,
