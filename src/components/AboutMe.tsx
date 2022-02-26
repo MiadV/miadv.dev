@@ -5,6 +5,7 @@ import GraphicDesignIcon from '@/Icons/GraphicDesignIcon';
 import ConsultationIcon from '@/Icons/ConsultationIcon';
 // import { Button } from './Button';
 import { Card } from './Card';
+import { Button } from './Button';
 
 const FloatingItems: React.FC<{
   className?: string;
@@ -39,10 +40,12 @@ export const AboutMe = () => {
           <p className="mt-6 break-words text-lg">
             {`I’m a web developer with high enthusiasm for frontend technologies. I have done projects including eCommerce, Static websites, and full-stack Web Apps. I also like doing product photography and creating content for my blog in my spare time.`}
           </p>
-          {/* 
+
           <div className="mt-8">
-            <Button>Download CV</Button>
-          </div> */}
+            <Button as="a" href="https://read.cv/miadv" isExternal>
+              View Resume
+            </Button>
+          </div>
         </div>
 
         <div className="relative mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:mt-0 xl:-right-20">
