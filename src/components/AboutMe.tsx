@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import WebDevIcon from '@/Icons/WebDevIcon';
 import GraphicDesignIcon from '@/Icons/GraphicDesignIcon';
 import ConsultationIcon from '@/Icons/ConsultationIcon';
-// import { Button } from './Button';
 import { Card } from './Card';
 import { Button } from './Button';
+import * as gtag from '@/utils/gtag';
 
 const FloatingItems: React.FC<{
   className?: string;
@@ -42,7 +42,19 @@ export const AboutMe = () => {
           </p>
 
           <div className="mt-8">
-            <Button as="a" href="https://read.cv/miadv" isExternal>
+            <Button
+              as="a"
+              href="https://read.cv/miadv"
+              isExternal
+              onClick={() =>
+                gtag.event({
+                  action: 'view_resume',
+                  category: 'general',
+                  label: 'View Resume',
+                  value: 1,
+                })
+              }
+            >
               View Resume
             </Button>
           </div>

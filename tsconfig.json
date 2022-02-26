@@ -24,6 +24,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/utils/rehypeMetaAttribute.js"
-  ],
+, "src/utils/gtag.js"  ],
   "exclude": ["node_modules"]
 }
