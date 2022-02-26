@@ -46,19 +46,11 @@ export default class Document extends NextDocument {
             content="/static/favicons/browserconfig.xml"
             name="msapplication-config"
           />
-
           <link
             rel="alternate"
             type="application/rss+xml"
             href="/feeds/feed.xml"
           />
-
-          {/* TODO integrate analytics & google verifications */}
-          {/* <meta content="???" name="yandex-verification" />
-          <meta
-            content="???"
-            name="google-site-verification"
-          /> */}
         </Head>
         <body className="relative bg-gray-50 text-gray-600 antialiased selection:bg-fuchsia-200 selection:text-gray-900 dark:bg-gray-900  dark:text-gray-400 dark:selection:bg-fuchsia-300">
           <Main />
