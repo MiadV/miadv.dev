@@ -10,6 +10,8 @@ import YoutubeIcon from '@/Icons/YoutubeIcon';
 import ExternalLinkIcon from '@/Icons/ExternalLinkIcon';
 import projectsList from '@/data/projects';
 
+let reversedList = projectsList.reverse();
+
 export default function Projects() {
   return (
     <>
@@ -42,7 +44,7 @@ export default function Projects() {
             </div>
           </div>
           <ul className="space-y-8">
-            {projectsList.map((project) => (
+            {reversedList.map((project) => (
               <li key={project.id}>
                 <article className="group flex flex-col overflow-hidden rounded-2xl border-slate-200 bg-gray-200 shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:saturate-100 dark:border-slate-700 dark:bg-gray-500">
                   <Image
