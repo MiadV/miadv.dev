@@ -100,4 +100,12 @@ module.exports = [
     github: 'https://github.com/MiadV/carousell-tw',
     live: 'http://carousell-tw.vercel.app/',
   },
+  {
+    id: 11,
+    title: 'Responsive Amazing Deals Platform - Landing Page + Dark Mode ',
+    tags: ['reactjs', 'nextjs', 'typescript'],
+    thumbnail: '/static/images/projects/myfave-landing-page.png',
+    github: 'https://github.com/MiadV/myfave-tw',
+    live: 'https://myfave-tw.vercel.app/',
+  },
 ];
