@@ -60,14 +60,13 @@ export const Navbar = () => {
           : 'bg-transparent'
       )}
     >
-      <div className="mx-auto max-w-screen-2xl py-4 px-4 md:px-8">
+      <div className="mx-auto max-w-screen-2xl px-4 py-4 md:px-8">
         <div className="relative flex items-center">
           <Link href="/">
             <a className="flex-none">
               <span className="sr-only">MiadV personal blog</span>
               <span className="flex items-center space-x-2">
                 <CompactLogo className="h-[28px] w-[28px]" />
-                <TextLogo className="h-[22px] w-auto fill-gray-900 dark:fill-gray-50" />
               </span>
             </a>
           </Link>
@@ -166,7 +165,7 @@ const MenuPopOver = ({ display }: { display: string }) => {
             <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-gray-900/80" />
           </Transition.Child>
 
-          <div className="fixed top-0 bottom-0 left-0 w-full max-w-xs rounded-r-2xl bg-white p-6 shadow-lg dark:bg-gray-800 ">
+          <div className="fixed bottom-0 left-0 top-0 w-full max-w-xs rounded-r-2xl bg-white p-6 shadow-lg dark:bg-gray-800 ">
             <a className="mx-auto mt-4">
               <span className="flex items-center space-x-2">
                 <CompactLogo className="h-[32px] w-[32px]" />
@@ -194,7 +193,7 @@ const MenuPopOver = ({ display }: { display: string }) => {
 
             <button
               aria-label="Close Navigation Menu"
-              className="absolute top-5 right-5"
+              className="absolute right-5 top-5"
               onClick={() => setIsOpen(false)}
             >
               <svg viewBox="0 0 10 10" className="h-4 w-4" aria-hidden="true">
