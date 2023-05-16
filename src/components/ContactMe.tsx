@@ -28,7 +28,7 @@ export const ContactMe = () => {
   return (
     <section id="contact-me" className="py-16">
       <Card className="relative z-0 text-center">
-        <span className="absolute top-8 left-8 -z-10 hidden sm:block">
+        <span className="absolute left-8 top-8 -z-10 hidden sm:block">
           <PaperPlaneIcon className="h-[100px] w-[100px] fill-gray-200 dark:fill-gray-600" />
         </span>
 

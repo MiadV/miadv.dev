@@ -34,7 +34,7 @@ const BlogSliderItem: React.FC<{ blogItem: PostFrontMatterType }> = ({
             {blogItem.readTime.text}
           </span>
         </div>
-        <span className="ml-auto mb-auto basis-[70px]">
+        <span className="mb-auto ml-auto basis-[70px]">
           <FeatherIcon className="h-[70px] w-[70px] fill-gray-200 dark:fill-gray-600" />
         </span>
       </div>
@@ -59,7 +59,7 @@ export const LatestBlogs: React.FC<{
       <h2 className="relative text-center text-3xl font-semibold text-gray-900 dark:text-gray-50">
         Latest Blogs
       </h2>
-      <span className="mx-auto mt-2 mb-8 block h-1.5 w-[80px] rounded-full bg-indigo-600" />
+      <span className="mx-auto mb-8 mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600" />
 
       <div id="latest-blogs__carousel" className="sm:!-m-8">
         <Swiper
