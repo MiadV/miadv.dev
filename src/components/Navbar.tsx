@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Dialog, Transition } from '@headlessui/react';
 import { ThemeToggle } from './ThemeToggle';
 import GithubIcon from '@/Icons/GithubIcon';
-import { CompactLogo, TextLogo } from '@/components/Logo';
+import { CompactLogo } from '@/components/Logo';
 
 const navItems = [
   {
@@ -169,7 +169,6 @@ const MenuPopOver = ({ display }: { display: string }) => {
             <a className="mx-auto mt-4">
               <span className="flex items-center space-x-2">
                 <CompactLogo className="h-[32px] w-[32px]" />
-                <TextLogo className="h-[22px] w-auto fill-gray-900 dark:fill-gray-50" />
               </span>
             </a>
 
