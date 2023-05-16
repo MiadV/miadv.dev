@@ -22,7 +22,7 @@ const BlogLayout: React.FC<{
 }> = ({ children, postMeta, prevBlog, nextBlog }) => {
   return (
     <Container>
-      <article className="prose prose-slate mx-auto prose-a:font-semibold prose-a:text-indigo-600 dark:prose-invert prose-a:dark:text-indigo-400">
+      <article className="prose prose-slate mx-auto dark:prose-invert prose-a:font-semibold prose-a:text-indigo-600 prose-a:dark:text-indigo-400">
         <header className="not-prose">
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
             {widontString(postMeta.title)}
@@ -88,7 +88,7 @@ const BlogLayout: React.FC<{
             <SubscribeCard />
           </div>
 
-          <nav className="mt-8 flex flex-col justify-between space-y-4 md:flex-row md:space-y-0 md:space-x-8">
+          <nav className="mt-8 flex flex-col justify-between space-y-4 md:flex-row md:space-x-8 md:space-y-0">
             {(nextBlog || prevBlog) && (
               <>
                 <div className="md:w-1/2">

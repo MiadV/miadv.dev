@@ -51,16 +51,16 @@ export const EditorLayout: React.FC<{
   onCopy: () => void;
 }> = ({ filename, copied, onCopy, children }) => {
   return (
-    <div className="mt-5 mb-8 overflow-hidden rounded-xl bg-slate-800 shadow-lg first:mt-0 last:mb-0 dark:ring-1 dark:ring-inset dark:ring-white/10">
+    <div className="mb-8 mt-5 overflow-hidden rounded-xl bg-slate-800 shadow-lg first:mt-0 last:mb-0 dark:ring-1 dark:ring-inset dark:ring-white/10">
       {filename && (
         <div className="relative flex text-xs leading-6 ">
-          <div className="mt-2 flex flex-none items-center border-t border-b border-t-transparent border-b-gray-300 px-4 py-1 text-indigo-300">
+          <div className="mt-2 flex flex-none items-center border-b border-t border-b-gray-300 border-t-transparent px-4 py-1 text-indigo-300">
             {filename}
           </div>
           <div className="flex flex-auto overflow-hidden rounded-tr-xl">
             <div className="-mr-px flex-auto rounded-tl border border-slate-500/30 bg-slate-700/50"></div>
           </div>
-          <div className="absolute top-2 right-0 flex items-center pr-4">
+          <div className="absolute right-0 top-2 flex items-center pr-4">
             <div className="relative -mr-2 flex">
               <CopyButton onCopy={onCopy} copied={copied} />
             </div>
@@ -69,7 +69,7 @@ export const EditorLayout: React.FC<{
       )}
       <div className="relative">
         {!filename && (
-          <div className="absolute top-2 right-0 z-10 flex items-center pr-4">
+          <div className="absolute right-0 top-2 z-10 flex items-center pr-4">
             <CopyButton onCopy={onCopy} copied={copied} />
           </div>
         )}
