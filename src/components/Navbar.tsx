@@ -56,7 +56,7 @@ export const Navbar = () => {
       className={clsx(
         'fixed inset-x-0 top-0 z-40 h-16 transition-colors duration-300',
         isStiky || router.asPath !== '/'
-          ? 'border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800'
+          ? 'border-b border-slate-200 bg-white/80 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/80'
           : 'bg-transparent'
       )}
     >
