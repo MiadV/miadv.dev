@@ -2,6 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import { Card } from './Card';
 import useTypingText from '@/hooks/useTypingText';
+import { Button } from './Button';
+import Link from 'next/link';
+import ChevronRightIcon from '../Icons/ChevronRightIcon';
 
 const Hero: React.FC = () => {
   const { typingText } = useTypingText(
@@ -10,8 +13,8 @@ const Hero: React.FC = () => {
     1000
   );
   return (
-    <div className="bg-gray-100 py-16 dark:bg-gray-800">
-      <div className="mx-auto mt-16 max-w-screen-lg">
+    <div className="relative bg-gray-100 pb-16 pt-16 dark:bg-gray-800">
+      <div className="pointer-events-none relative z-10 mx-auto mt-16 max-w-screen-lg">
         <section
           id="hero"
           className="flex flex-col items-center justify-between px-6 sm:px-8 md:flex-row"
@@ -26,7 +29,16 @@ const Hero: React.FC = () => {
             </span>
           </h1>
 
-          <Card className="mt-8 h-[270px] w-[330px] text-center md:mt-0 md:w-[350px] lg:w-[400px]">
+          <div className="pointer-events-auto mt-8">
+            <Link href={'#about'} passHref>
+              <Button variant="outline">
+                <span className="block">Scroll Down</span>
+                <ChevronRightIcon className="rotate-90" />
+              </Button>
+            </Link>
+          </div>
+
+          <Card className="mt-8 h-[270px] w-[330px] rounded-2xl border border-slate-200 bg-white/80 p-6 text-center  shadow-xl backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/80 md:mt-0 md:w-[350px] lg:w-[400px]">
             <Image
               src="/static/images/miad-vosoughi.jpg"
               alt="Miad Vosoughi - MiadV"
@@ -43,6 +55,11 @@ const Hero: React.FC = () => {
           </Card>
         </section>
       </div>
+
+      <canvas
+        id="animation_bg"
+        className="absolute inset-0 h-full w-full"
+      ></canvas>
     </div>
   );
 };

@@ -55,7 +55,7 @@ export const Navbar = () => {
       id="navbar"
       className={clsx(
         'fixed inset-x-0 top-0 z-40 h-16 transition-colors duration-300',
-        isStiky || router.asPath !== '/'
+        isStiky || (router.isReady && router.asPath !== '/')
           ? 'border-b border-slate-200 bg-white/80 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/80'
           : 'bg-transparent'
       )}
@@ -80,7 +80,9 @@ export const Navbar = () => {
                       <a
                         className={clsx(
                           'peer transition-all duration-150 hover:text-indigo-500',
-                          router.asPath === item.path ? 'text-indigo-500' : ''
+                          router.isReady && router.asPath === item.path
+                            ? 'text-indigo-500'
+                            : ''
                         )}
                       >
                         {item.title}
@@ -89,7 +91,9 @@ export const Navbar = () => {
                     <span
                       className={clsx(
                         'absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-500 transition-all duration-150 peer-hover:scale-x-100',
-                        router.asPath === item.path ? 'scale-x-100' : ''
+                        router.isReady && router.asPath === item.path
+                          ? 'scale-x-100'
+                          : ''
                       )}
                     />
                   </li>
