@@ -1,5 +1,4 @@
 @tailwind base;
-@import 'fonts.css';
 
 /*! purgecss start ignore */
 @import 'prism.css';

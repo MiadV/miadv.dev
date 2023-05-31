@@ -4,26 +4,27 @@ import 'swiper/css/pagination';
 //
 import '@/styles/main.css';
 import React, { useEffect } from 'react';
+import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import ProgressBar from '@badrap/bar-of-progress';
-import type { AppProps } from 'next/app';
-import { Router, useRouter } from 'next/router';
+import NextNProgress from 'nextjs-progressbar';
+import type { CustomNextPage } from './page';
+import { useRouter } from 'next/router';
 import * as gtag from '@/utils/gtag';
 
-const progress = new ProgressBar({
-  size: 2,
-  color: '#D946EF', //fuchsia-500
-  className: 'bar-of-progress',
-  delay: 100,
+const interFont = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
-Router.events.on('routeChangeStart', () => progress.start());
-Router.events.on('routeChangeComplete', () => progress.finish());
-Router.events.on('routeChangeError', () => progress.finish());
+type AppPropsWithCustomPage = AppProps & {
+  Component: CustomNextPage;
+};
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppPropsWithCustomPage) {
   const router = useRouter();
+
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       gtag.pageview(url);
@@ -34,8 +35,32 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
+  useEffect(() => {
+    // this is to fix view-height problem on mobile browsers
+    function setDynamicVH() {
+      let vh = window?.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setDynamicVH();
+
+    window?.addEventListener('resize', setDynamicVH);
+
+    return () => {
+      window?.removeEventListener('resize', setDynamicVH);
+    };
+  }, []);
+
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <>
+      <style jsx global>{`
+        html {
+          font-family: ${interFont.style.fontFamily}, TwemojiCountryFlags;
+        }
+      `}</style>
+
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
         strategy="afterInteractive"
@@ -56,8 +81,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       />
 
+      <NextNProgress color="#D946EF" nonce="fv" />
       <ThemeProvider attribute="class">
-        <Component {...pageProps} />
+        <div id="top" className={`${interFont.variable} font-sans`}>
+          {getLayout(<Component {...pageProps} />)}
+        </div>
       </ThemeProvider>
     </>
   );

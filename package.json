@@ -1,13 +1,13 @@
 {
   "name": "miadv.dev",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
-    "generate:rss": "node ./scripts/generate-rss.mjs",
-    "generate:sitemap": "node ./scripts/generate-sitemap.mjs",
+    "postbuild": "node ./bin/generate-rss.mjs && node ./bin/generate-sitemap.mjs",
+    "generate:rss": "node ./bin/generate-rss.mjs",
+    "generate:sitemap": "node ./bin/generate-sitemap.mjs",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write src/**/*.{css,scss,ts,tsx}",
@@ -18,17 +18,18 @@
     "npm": "please-use-yarn"
   },
   "dependencies": {
-    "@badrap/bar-of-progress": "^0.1.2",
-    "@headlessui/react": "^1.4.3",
-    "clsx": "^1.1.1",
-    "date-fns": "^2.28.0",
+    "@headlessui/react": "^1.7.4",
+    "@usertive/react-fluid-animation": "^1.0.5",
+    "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
     "esbuild": "^0.14.21",
     "framer-motion": "^6.2.4",
     "gray-matter": "^4.0.3",
     "lodash.debounce": "^4.0.8",
     "mdx-bundler": "^8.0.1",
     "next": "^13.4.4",
-    "next-themes": "^0.0.15",
+    "next-themes": "^0.2.0",
+    "nextjs-progressbar": "^0.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reading-time": "^1.5.0",
@@ -55,7 +56,7 @@
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.5",
     "tailwindcss": "^3.0.18",
-    "typescript": "4.4.4"
+    "typescript": "4.9.4"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix",

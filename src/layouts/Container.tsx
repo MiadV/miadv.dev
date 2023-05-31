@@ -14,7 +14,7 @@ const Container: React.FC<ContainerProps> = ({ children, className }) => {
       <header>
         <Navbar />
       </header>
-      <div id="top" className="flex h-screen flex-col justify-between">
+      <div className="flex h-screen flex-col justify-between">
         <main
           className={clsx(
             'mx-auto mt-24 w-full max-w-screen-lg px-6 sm:mt-32 sm:px-8 xl:px-12',

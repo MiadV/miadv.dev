@@ -1,5 +1,4 @@
 import React from 'react';
-import Script from 'next/script';
 import type { InferGetStaticPropsType } from 'next';
 import { getAllPostsFrontmatter } from '@/utils/getPosts';
 import { AboutMe } from '@/components/AboutMe';
@@ -16,10 +15,6 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Script
-        strategy="afterInteractive"
-        src={`/static/script/fluid-simulation.js`}
-      />
       <SEO />
       <header>
         <Navbar />

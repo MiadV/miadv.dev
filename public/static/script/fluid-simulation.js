@@ -26,7 +26,7 @@ SOFTWARE.
 
 // Simulation section
 
-const canvas = document.getElementById('animation_bg');
+const canvas = document.getElementById('fluid_canvas');
 resizeCanvas();
 
 let config = {

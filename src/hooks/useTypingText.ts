@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function useTypingText(text: string, speed = 150, delay = 2000) {
   const firstRender = useRef(true);

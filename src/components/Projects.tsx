@@ -16,17 +16,18 @@ export const Projects = () => {
 
           <p className="mt-6 break-words text-lg">
             {`Most of my web apps are specifically designed based on the employer's needs and are private. But feel free to check out the`}{' '}
-            <Link href={`/projects/#top`}>
-              <a className="font-semibold text-indigo-600 dark:text-indigo-400">
-                projects
-              </a>
+            <Link
+              href={`/projects/#top`}
+              className="font-semibold text-indigo-600 dark:text-indigo-400"
+            >
+              projects
             </Link>{' '}
             {`page where I maintain a list of some of my personal/public projects.`}
           </p>
 
           <div className="mt-8">
-            <Link href={`/projects/#top`} passHref>
-              <Button as="a">View Projects</Button>
+            <Link href={`/projects/#top`}>
+              <Button>View Projects</Button>
             </Link>
           </div>
         </div>
