@@ -14,6 +14,28 @@
   }
 }
 
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.neutral.300') theme('colors.neutral.100');
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: theme('colors.neutral.100');
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: theme('colors.neutral.300');
+  border-radius: 14px;
+  border: 3px solid theme('colors.neutral.100');
+}
+
 /* styling Swiper */
 .swiper-slide {
   /* force all slider items occupy largest items height */

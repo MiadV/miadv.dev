@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
-    "@usertive/react-fluid-animation": "^1.0.5",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "esbuild": "^0.14.21",

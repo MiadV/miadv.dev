@@ -8,7 +8,11 @@ const CustomLink: React.FC<{ href: string }> = (props) => {
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {
-    return <Link {...props}>{props.children}</Link>;
+    return (
+      <Link scroll={false} {...props}>
+        {props.children}
+      </Link>
+    );
   }
 
   return <a target="_blank" rel="noopener noreferrer" {...props} />;

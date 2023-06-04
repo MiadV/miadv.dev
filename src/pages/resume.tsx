@@ -2,10 +2,63 @@ import React, { ReactElement } from 'react';
 import Image from 'next/image';
 import SEO from '@/components/SEO';
 import Container from '@/layouts/Container';
-import { Card } from '../components/Card';
-import Tag from '../components/Tag';
+import EmailIcon from '@/Icons/EmailIcon';
+import LinkedinIcon from '@/Icons/LinkedinIcon';
+import YoutubeIcon from '@/Icons/YoutubeIcon';
+import GithubIcon from '@/Icons/GithubIcon';
+import ExperienceCard from '@/components/resume/ExperienceCard';
+import EducationCard from '@/components/resume/EducationCard';
+import SkillsCard from '@/components/resume/SkillsCard';
+import StickyTOC from '@/components/resume/TOC';
+import useSticky from '@/hooks/useSticky';
+
+const socialLinks = [
+  {
+    lable: 'email address',
+    Icon: <EmailIcon />,
+    href: 'mailto:miadv.biz@gmail.com',
+  },
+  {
+    lable: 'github profile',
+    Icon: <GithubIcon />,
+    href: 'https://github.com/miadv',
+  },
+  {
+    lable: 'linkedin profile',
+    Icon: <LinkedinIcon />,
+    href: 'https://www.linkedin.com/in/miad-vosoughi/',
+  },
+
+  {
+    lable: 'youtube',
+    Icon: <YoutubeIcon />,
+    href: 'https://www.youtube.com/c/MiadVosoughi/',
+  },
+];
+
+const skills = {
+  'Main Skills': ['JavaScript', 'TypeScript', 'React', 'Nextjs'],
+  'Frontend Tooling': [
+    'Vite',
+    'Webpack',
+    'Parcel',
+    'Postcss',
+    'npm',
+    'pnpm',
+    'Yarn',
+  ],
+  Other: [
+    'git',
+    'github',
+    'github-actions',
+    'linting',
+    'aws-amplify',
+    'Vercel',
+  ],
+};
 
 export default function Resume() {
+  const showBackToTop = useSticky(250);
   return (
     <>
       <SEO
@@ -13,19 +66,45 @@ export default function Resume() {
         description="Resume, CV – Miad Vosoughi"
       />
 
-      <div className="flex-1 lg:grid lg:grid-cols-[250px_1fr] lg:gap-6 xl:grid-cols-[250px_1fr_250px]">
-        <div className="sticky top-[100px] mb-12 hidden h-[100px] lg:block">
-          <span className="mt-2 block text-lg font-semibold text-gray-900 dark:text-gray-50">
+      <div className="flex-1 lg:grid lg:grid-cols-[250px_1fr] lg:gap-6 xl:grid-cols-[250px_1fr_250px] xl:gap-10">
+        <aside className="sticky top-[100px] mb-12 hidden h-[100px] lg:block">
+          <Image
+            src="/static/images/miad-vosoughi.jpg"
+            alt="Miad Vosoughi - MiadV"
+            priority
+            width={100}
+            height={100}
+            quality={100}
+            className="block overflow-hidden rounded-xl border bg-gray-200"
+          />
+
+          <span className="text-md mt-4 block font-semibold text-gray-900 dark:text-gray-50">
             Miad Vosoughi Nia
           </span>
           <span className="text-xs font-medium italic">
             Software Engineer, Frontend Developer, Web Developer
           </span>
-        </div>
+
+          <ul className="mt-4 flex items-center space-x-2">
+            {socialLinks.map((link) => (
+              <li key={link.lable}>
+                <a
+                  href={link.href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="fill-gray-600 hover:fill-indigo-600 dark:fill-gray-400 dark:hover:fill-indigo-400"
+                >
+                  <span className="sr-only">{link.lable}</span>
+                  {link.Icon}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
 
         <article className="mx-auto max-w-screen-sm">
           <div>
-            <section id="about-me">
+            <section id="summary" className="scroll-mt-16">
               <div className="mb-2 text-center lg:text-left">
                 <Image
                   src="/static/images/miad-vosoughi.jpg"
@@ -34,7 +113,7 @@ export default function Resume() {
                   width={120}
                   height={120}
                   quality={100}
-                  className="block overflow-hidden rounded-full bg-gray-200"
+                  className="mx-auto block overflow-hidden rounded-full bg-gray-200 lg:hidden"
                 />
 
                 <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">
@@ -57,44 +136,38 @@ export default function Resume() {
               </p>
             </section>
 
-            <section id="about-me" className="mt-10">
+            <section id="work-experience" className="mt-10 scroll-mt-16">
               <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-gray-50 lg:text-left">
-                Work Experience
+                <a className="anchor" href="#work-experience">
+                  Work Experience
+                </a>
               </h2>
               <span className="mx-auto mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600 lg:mx-0" />
-              <div className="mt-6 space-y-4">
-                <Card>
-                  <div className="flex flex-col justify-between md:flex-row">
-                    <div className="flex flex-col items-center md:flex-row">
-                      <Image
-                        src="/static/images/cv/fave.jpg"
-                        alt="Fave Sdn bhd"
-                        priority
-                        width={44}
-                        height={44}
-                        quality={100}
-                        className="block overflow-hidden rounded-xl bg-gray-200"
-                      />
-                      <div className="mt-4 text-center md:ml-4 md:mt-0 md:text-left">
-                        <span className="block text-lg font-bold">
-                          Fave Sdn. Bhd.
-                        </span>
-
-                        <span className="block text-sm font-semibold">
-                          Software Engineer • Full-time
-                        </span>
-                      </div>
-                    </div>
-                    <div className="mt-2 flex justify-center gap-4 md:mt-0 md:flex-col md:gap-0">
-                      <span className="mb-1 block text-xs font-semibold">
-                        Aug 2022 - Present
-                      </span>
-                      <span className="mb-1 block text-xs ">
-                        Kuala Lumpur, Malaysia
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-6 text-sm">
+              <div className="mt-6 space-y-8">
+                <ExperienceCard
+                  company={'Fave Sdn. Bhd.'}
+                  logo={'/static/images/cv/fave.jpg'}
+                  role={'Software Engineer • Full-time'}
+                  timePeriod={'Aug 2022 - Present'}
+                  location={'Kuala Lumpur, Malaysia'}
+                  carouselItems={[]}
+                  tags={[
+                    'Typescript',
+                    'javascript',
+                    'React',
+                    'nextjs',
+                    'tailwindcss',
+                    'Postcss',
+                    'vite',
+                    'webpack',
+                    'react-query',
+                    'swr',
+                    'github',
+                    'aws',
+                    'amplify',
+                  ]}
+                >
+                  <div className="prose prose-sm prose-slate dark:prose-invert">
                     <ul>
                       <li>
                         Led the complete revamp of the storefront utilizing
@@ -133,33 +206,176 @@ export default function Resume() {
                       </li>
                     </ul>
                   </div>
+                </ExperienceCard>
 
-                  <div id="projects"></div>
-
-                  <div id="tags" className="mt-4 flex flex-wrap gap-2">
-                    <Tag size="sm">Typescript</Tag>
-                    <Tag size="sm">javascript</Tag>
-                    <Tag size="sm">React</Tag>
-                    <Tag size="sm">nextjs</Tag>
-                    <Tag size="sm">tailwindcss</Tag>
-                    <Tag size="sm">Postcss</Tag>
-                    <Tag size="sm">aws</Tag>
-                    <Tag size="sm">amplify</Tag>
-                    <Tag size="sm">vite</Tag>
-                    <Tag size="sm">github</Tag>
-                    <Tag size="sm">webpack</Tag>
-                    <Tag size="sm">react-query</Tag>
-                    <Tag size="sm">swr</Tag>
+                <ExperienceCard
+                  company={'TBG Sdn. Bhd.'}
+                  logo={'/static/images/cv/tamay.jpg'}
+                  role={'Web Developer • Contract'}
+                  timePeriod={'Dec 2017 - May 2022'}
+                  location={'Kuala Lumpur, Malaysia'}
+                  carouselItems={[
+                    {
+                      id: 1,
+                      alt: 'TAMAY Group Landing Page',
+                      img: '/static/images/projects/tamay-group-landing-page.png',
+                      href: 'https://tamaygroup.com',
+                    },
+                    {
+                      id: 2,
+                      alt: 'Store Management App',
+                      img: '/static/images/projects/store-management.png',
+                      href: 'https://github.com/MiadV/store-management',
+                    },
+                    {
+                      id: 3,
+                      alt: 'GilasCo Landing Page',
+                      img: '/static/images/projects/gilasco-landing-page.png',
+                      href: 'https://gilasco.com/',
+                    },
+                  ]}
+                  tags={[
+                    'PHP',
+                    'Typescript',
+                    'javascript',
+                    'Laravel',
+                    'React',
+                    'React-Native',
+                    'react-query',
+                    'nextjs',
+                    'Chakra-UI',
+                    'HTML',
+                    'css',
+                    'jquery',
+                    'github',
+                    'webpack',
+                    'Wordpress',
+                  ]}
+                >
+                  <div className="prose prose-sm prose-slate dark:prose-invert">
+                    <ul>
+                      <li>
+                        Developed and maintained a customized multi-store sales
+                        and expense management system using React.js, Chakra-UI,
+                        Typescript, Laravel.
+                      </li>
+                      <li>
+                        Developed a customized multi-level referral dropshipper
+                        management system using React.js, Chakra-UI, Typescript,
+                        Laravel.
+                      </li>
+                      <li>
+                        Developed and implemented membership system using
+                        React-js, PHP backend, and React Native mobile app.
+                      </li>
+                      <li>Managed social media marketing campaigns (SMM).</li>
+                    </ul>
                   </div>
-                </Card>
+                </ExperienceCard>
+
+                <ExperienceCard
+                  company={'FLTZ Logic Sdn. Bhd.'}
+                  logo={'/static/images/cv/fltz_logic.jpg'}
+                  role={'Web Developer • Full-time'}
+                  timePeriod={'Dec 2017 - May 2020'}
+                  location={'Kuala Lumpur, Malaysia'}
+                  carouselItems={[]}
+                  tags={[
+                    'PHP',
+                    'HTML',
+                    'css',
+                    'jquery',
+                    'bootstrap',
+                    'Wordpress',
+                    'WooCommerce',
+                  ]}
+                >
+                  <div className="prose prose-sm prose-slate dark:prose-invert">
+                    <ul>
+                      <li>
+                        Designed and maintained several static and e-commerce
+                        websites.
+                      </li>
+                    </ul>
+                  </div>
+                </ExperienceCard>
+
+                <ExperienceCard
+                  company={'Science & Technology Park'}
+                  logo={'/static/images/cv/Hormozgan_STP.jpg'}
+                  role={'Web Developer • Full-time'}
+                  timePeriod={'Mar 2016 - May 2017'}
+                  location={'Hormozgan, Iran'}
+                  carouselItems={[]}
+                  tags={['PHP', 'PrestaShop', 'HTML', 'css']}
+                >
+                  <div className="prose prose-sm prose-slate dark:prose-invert">
+                    <ul>
+                      <li>
+                        Worked closely with investors to grow a newly lunched
+                        startup.
+                      </li>
+                      <li>
+                        Integrated several analytic tools to help scale the
+                        project faster.
+                      </li>
+                      <li>
+                        Developed customized plugins to better engage with
+                        customers and maximize customer retention.
+                      </li>
+                    </ul>
+                  </div>
+                </ExperienceCard>
+              </div>
+            </section>
+
+            <section id="education" className="mt-14 scroll-mt-16">
+              <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-gray-50 lg:text-left">
+                <a className="anchor" href="#education">
+                  Education
+                </a>
+              </h2>
+              <span className="mx-auto mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600 lg:mx-0" />
+              <div className="mt-6 space-y-8">
+                <EducationCard
+                  uni="Science And Research Branch of Fars University"
+                  field="BS, Chemical Engineering"
+                  location="Fars, Iran"
+                  timePeriod="2011 - 2014"
+                />
+              </div>
+            </section>
+
+            <section id="skills" className="mt-14 scroll-mt-16">
+              <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-gray-50 lg:text-left">
+                <a className="anchor" href="#education">
+                  Skills
+                </a>
+              </h2>
+              <span className="mx-auto mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600 lg:mx-0" />
+
+              <div className="mt-6 space-y-4">
+                {Object.keys(skills).map((k) => (
+                  <SkillsCard
+                    key={k}
+                    title={k}
+                    skills={skills[k as keyof typeof skills]}
+                  />
+                ))}
               </div>
             </section>
           </div>
         </article>
-
-        <aside className="sticky top-[100px] hidden max-h-[100px] w-full bg-red-300 xl:block">
-          sidebars
-        </aside>
+        <StickyTOC
+          className="sticky top-[100px] hidden max-h-[100px] w-full xl:block"
+          showBackToTop={showBackToTop}
+          toc={{
+            summary: { label: 'Summary' },
+            'work-experience': { label: 'Experience' },
+            education: { label: 'Education' },
+            skills: { label: 'Skills' },
+          }}
+        />
       </div>
     </>
   );

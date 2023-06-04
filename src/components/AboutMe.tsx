@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
 import WebDevIcon from '@/Icons/WebDevIcon';
 import GraphicDesignIcon from '@/Icons/GraphicDesignIcon';
 import ConsultationIcon from '@/Icons/ConsultationIcon';
@@ -43,9 +44,6 @@ export const AboutMe = () => {
 
           <div className="mt-8">
             <Button
-              as="a"
-              href="https://read.cv/miadv"
-              isExternal
               onClick={() =>
                 gtag.event({
                   action: 'view_resume',
@@ -55,7 +53,7 @@ export const AboutMe = () => {
                 })
               }
             >
-              View Resume
+              <Link href="/resume">View Resume</Link>
             </Button>
           </div>
         </div>

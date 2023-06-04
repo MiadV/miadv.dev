@@ -41,7 +41,7 @@ export const Navbar = () => {
 
   const isSticky = useSticky(50);
 
-  let isHomePage = router.asPath == '/';
+  let isHomePage = router.asPath === '/' || router.asPath?.startsWith('/#');
 
   return (
     <div
