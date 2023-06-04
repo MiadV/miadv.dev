@@ -98,10 +98,11 @@ const BlogLayout: React.FC<{
                         {'← '} Previous Article
                       </span>
                       <div>
-                        <Link href={`/blog/${prevBlog.slug}`}>
-                          <a className="font-medium capitalize text-indigo-600 hover:underline dark:text-indigo-400">
-                            {prevBlog.title}
-                          </a>
+                        <Link
+                          href={`/blog/${prevBlog.slug}`}
+                          className="font-medium capitalize text-indigo-600 hover:underline dark:text-indigo-400"
+                        >
+                          {prevBlog.title}
                         </Link>
                       </div>
                     </>
@@ -114,10 +115,11 @@ const BlogLayout: React.FC<{
                         Next Article {' →'}
                       </span>
                       <div className="ml-auto">
-                        <Link href={`/blog/${nextBlog.slug}`}>
-                          <a className="font-medium capitalize text-indigo-600 hover:underline dark:text-indigo-400">
-                            {nextBlog.title}
-                          </a>
+                        <Link
+                          href={`/blog/${nextBlog.slug}`}
+                          className="font-medium capitalize text-indigo-600 hover:underline dark:text-indigo-400"
+                        >
+                          {nextBlog.title}
                         </Link>
                       </div>
                     </div>

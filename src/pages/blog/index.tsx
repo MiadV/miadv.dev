@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, ReactElement } from 'react';
 import debounce from 'lodash.debounce';
 import type { InferGetStaticPropsType } from 'next';
 import { getAllPostsFrontmatter } from '@/utils/getPosts';
@@ -30,37 +30,39 @@ export default function Blog({
         title="Blog – Miad Vosoughi"
         description="My Personal Blogs, Snippets, Articles about web development, front-end, javscript, react-js."
       />
-      <Container>
-        <div className="mx-auto w-full max-w-screen-sm">
-          <div className="pb-8">
-            <div className="sm:text-center">
-              <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
-                Blog
-              </h1>
-              <p className="mb-4 text-lg">
-                {widontString('My Personal Blogs, Snippets, Articles...')}
-              </p>
-            </div>
-            <Input
-              onChange={onChangeDebounced}
-              type="text"
-              placeholder="Search articles"
-              aria-label="search for articles"
-              icon={<SearchIcon className="absolute right-3 top-2.5 h-5 w-5" />}
-            />
+      <div className="mx-auto w-full max-w-screen-sm">
+        <div className="pb-8">
+          <div className="sm:text-center">
+            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
+              Blog
+            </h1>
+            <p className="mb-4 text-lg">
+              {widontString('My Personal Blogs, Snippets, Articles...')}
+            </p>
           </div>
-          <ul className="space-y-8">
-            {filteredBlogPosts.map((blogItem) => (
-              <li key={blogItem.slug}>
-                <BlogListItem blogItem={blogItem} />
-              </li>
-            ))}
-          </ul>
+          <Input
+            onChange={onChangeDebounced}
+            type="text"
+            placeholder="Search articles"
+            aria-label="search for articles"
+            icon={<SearchIcon className="absolute right-3 top-2.5 h-5 w-5" />}
+          />
         </div>
-      </Container>
+        <ul className="space-y-8">
+          {filteredBlogPosts.map((blogItem) => (
+            <li key={blogItem.slug}>
+              <BlogListItem blogItem={blogItem} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
+
+Blog.getLayout = function getLayout(page: ReactElement) {
+  return <Container>{page}</Container>;
+};
 
 export async function getStaticProps() {
   const allFrontMatter = await getAllPostsFrontmatter('blog');

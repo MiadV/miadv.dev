@@ -9,8 +9,8 @@ const CustomLink: React.FC<{ href: string }> = (props) => {
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
-        <a {...props}>{props.children}</a>
+      <Link scroll={false} {...props}>
+        {props.children}
       </Link>
     );
   }
@@ -19,7 +19,8 @@ const CustomLink: React.FC<{ href: string }> = (props) => {
 };
 
 const RoundedImage: React.FC<ImageProps> = (props) => {
-  return <Image alt={props.alt} className="rounded-xl" {...props} />;
+  // eslint-disable-next-line jsx-a11y/alt-text
+  return <Image className="rounded-xl" {...props} />;
 };
 
 const MDXComponents = {

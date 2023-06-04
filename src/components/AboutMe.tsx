@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
 import WebDevIcon from '@/Icons/WebDevIcon';
 import GraphicDesignIcon from '@/Icons/GraphicDesignIcon';
 import ConsultationIcon from '@/Icons/ConsultationIcon';
@@ -38,14 +39,11 @@ export const AboutMe = () => {
           <span className="mx-auto mt-2 block h-1.5 w-[80px] rounded-full bg-indigo-600 lg:mx-0" />
 
           <p className="mt-6 break-words text-lg">
-            {`I’m a web developer with high enthusiasm for frontend technologies. I have done projects including eCommerce, Static websites, and full-stack Web Apps. I also like doing product photography and creating content for my blog in my spare time.`}
+            {`Software Engineer with a focus on frontend. Passionate about creating responsive, performant, and user-friendly web applications using modern web development tools.`}
           </p>
 
           <div className="mt-8">
             <Button
-              as="a"
-              href="https://read.cv/miadv"
-              isExternal
               onClick={() =>
                 gtag.event({
                   action: 'view_resume',
@@ -55,7 +53,7 @@ export const AboutMe = () => {
                 })
               }
             >
-              View Resume
+              <Link href="/resume">View Resume</Link>
             </Button>
           </div>
         </div>

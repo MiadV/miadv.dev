@@ -24,6 +24,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/utils/rehypeMetaAttribute.js"
-, "src/utils/gtag.js"  ],
+, "src/utils/gtag.js", "src/hooks/useFluidCanvas.js", "src/components/FluidCanvas.jsx"  ],
   "exclude": ["node_modules"]
 }

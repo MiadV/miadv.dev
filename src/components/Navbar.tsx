@@ -1,9 +1,10 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import clsx from 'clsx';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Dialog, Transition } from '@headlessui/react';
 import { ThemeToggle } from './ThemeToggle';
+import useSticky from '@/hooks/useSticky';
 import GithubIcon from '@/Icons/GithubIcon';
 import { CompactLogo } from '@/components/Logo';
 
@@ -18,11 +19,11 @@ const navItems = [
   },
   {
     title: 'Projects',
-    path: '/projects/#top',
+    path: '/projects',
   },
   {
     title: 'Blog',
-    path: '/blog/#top',
+    path: '/blog',
   },
   {
     title: 'Contact',
@@ -31,44 +32,34 @@ const navItems = [
 ];
 
 export const Navbar = () => {
-  const [isStiky, setIsSticky] = useState(false);
   const router = useRouter();
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    let offset = 50;
-    function onScroll() {
-      if (!isStiky && window.scrollY > offset) {
-        setIsSticky(true);
-      } else if (isStiky && window.scrollY <= offset) {
-        setIsSticky(false);
-      }
-    }
+    setShouldRender(true);
+  }, []);
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, [isStiky]);
+  const isSticky = useSticky(50);
+
+  let isHomePage = router.asPath === '/' || router.asPath?.startsWith('/#');
 
   return (
     <div
       id="navbar"
       className={clsx(
         'fixed inset-x-0 top-0 z-40 h-16 transition-colors duration-300',
-        isStiky || router.asPath !== '/'
-          ? 'border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800'
+        (shouldRender && !isHomePage) || isSticky
+          ? 'border-b border-slate-200 bg-white/80 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/80'
           : 'bg-transparent'
       )}
     >
       <div className="mx-auto max-w-screen-2xl px-4 py-4 md:px-8">
         <div className="relative flex items-center">
-          <Link href="/">
-            <a className="flex-none">
-              <span className="sr-only">MiadV personal blog</span>
-              <span className="flex items-center space-x-2">
-                <CompactLogo className="h-[28px] w-[28px]" />
-              </span>
-            </a>
+          <Link href="/" className="flex-none">
+            <span className="sr-only">MiadV personal blog</span>
+            <span className="flex items-center space-x-2">
+              <CompactLogo className="h-[28px] w-[28px]" />
+            </span>
           </Link>
 
           <div className="relative ml-auto items-center md:flex">
@@ -76,20 +67,24 @@ export const Navbar = () => {
               <ul className="flex space-x-10">
                 {navItems.map((item) => (
                   <li className="relative" key={item.title}>
-                    <Link href={item.path}>
-                      <a
-                        className={clsx(
-                          'peer transition-all duration-150 hover:text-indigo-500',
-                          router.asPath === item.path ? 'text-indigo-500' : ''
-                        )}
-                      >
-                        {item.title}
-                      </a>
+                    <Link
+                      href={item.path}
+                      scroll={!item.path.startsWith('/#')}
+                      className={clsx(
+                        'peer transition-all duration-150 hover:text-indigo-500',
+                        shouldRender && router.asPath === item.path
+                          ? 'text-indigo-500'
+                          : ''
+                      )}
+                    >
+                      {item.title}
                     </Link>
                     <span
                       className={clsx(
                         'absolute inset-x-0 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-indigo-500 transition-all duration-150 peer-hover:scale-x-100',
-                        router.asPath === item.path ? 'scale-x-100' : ''
+                        shouldRender && router.asPath === item.path
+                          ? 'scale-x-100'
+                          : ''
                       )}
                     />
                   </li>
@@ -175,16 +170,15 @@ const MenuPopOver = ({ display }: { display: string }) => {
             <ul className="mt-16 space-y-6">
               {navItems.map((item) => (
                 <li className="relative" key={item.title}>
-                  <Link href={item.path}>
-                    <a
-                      onClick={() => setIsOpen(false)}
-                      className={clsx(
-                        'peer block text-lg font-semibold transition-all duration-150 hover:text-indigo-500',
-                        router.asPath === item.path ? 'text-indigo-500' : ''
-                      )}
-                    >
-                      {item.title}
-                    </a>
+                  <Link
+                    href={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={clsx(
+                      'peer block text-lg font-semibold transition-all duration-150 hover:text-indigo-500',
+                      router.asPath === item.path ? 'text-indigo-500' : ''
+                    )}
+                  >
+                    {item.title}
                   </Link>
                 </li>
               ))}

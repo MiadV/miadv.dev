@@ -18,13 +18,11 @@ const BlogSliderItem: React.FC<{ blogItem: PostFrontMatterType }> = ({
       <div className="flex items-center">
         <div>
           <Link href={`/blog/${blogItem.slug!}`}>
-            <a>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
-                {blogItem.title.length < 50
-                  ? widontString(blogItem.title)
-                  : widontString(blogItem.title.slice(0, 50) + '...')}
-              </h3>
-            </a>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
+              {blogItem.title.length < 50
+                ? widontString(blogItem.title)
+                : widontString(blogItem.title.slice(0, 50) + '...')}
+            </h3>
           </Link>
           <span className="text-xs font-medium text-gray-500">
             <time dateTime={blogItem.publishedAt}>
@@ -40,8 +38,8 @@ const BlogSliderItem: React.FC<{ blogItem: PostFrontMatterType }> = ({
       </div>
 
       <div className="mt-4">
-        <Link href={`/blog/${blogItem.slug!}`} passHref>
-          <Button as="a" variant="ghost" size="sm">
+        <Link href={`/blog/${blogItem.slug!}`}>
+          <Button variant="ghost" size="sm">
             Read More
             <ChevronRightIcon className="ml-2 h-5 w-5 fill-indigo-500" />
           </Button>

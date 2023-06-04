@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
               width={120}
               height={120}
               quality={100}
-              className="block overflow-hidden rounded-full bg-gray-200"
+              className="mx-auto block overflow-hidden rounded-full bg-gray-200"
             />
             <span className="mt-2 block text-lg font-semibold text-gray-900 dark:text-gray-50">
               Miad Vosoughi Nia
