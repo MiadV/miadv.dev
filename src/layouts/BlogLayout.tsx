@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { format, parseISO } from 'date-fns';
@@ -16,6 +16,7 @@ const discussUrl = (slug: string) =>
   )}`;
 
 const BlogLayout: React.FC<{
+  children: ReactNode;
   postMeta: PostFrontMatterType;
   nextBlog: PostFrontMatterType;
   prevBlog: PostFrontMatterType;

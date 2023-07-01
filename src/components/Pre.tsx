@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, ReactNode } from 'react';
 import { EditorLayout } from './EditorLayout';
 
-const Pre: React.FC<{ filename?: string }> = (props) => {
+const Pre: React.FC<{ children: ReactNode; filename?: string }> = (props) => {
   const textInput = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
 
