@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 const CopyButton: React.FC<{ copied: boolean; onCopy: () => void }> = ({
   copied,
@@ -46,7 +46,6 @@ const CopyButton: React.FC<{ copied: boolean; onCopy: () => void }> = ({
 };
 
 export const EditorLayout: React.FC<{
-  children: ReactNode;
   copied: boolean;
   filename?: string;
   onCopy: () => void;
