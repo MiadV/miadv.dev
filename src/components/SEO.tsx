@@ -23,7 +23,7 @@ const defaultMeta = {
   image: '/static/images/banner.png',
 };
 
-const SEO: React.FC<SEOProps> = (customMeta) => {
+const SEO: React.FC<SEOProps> = ({ children, ...customMeta }) => {
   const router = useRouter();
   const meta = {
     ...defaultMeta,
